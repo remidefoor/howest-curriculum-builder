@@ -1,0 +1,32 @@
+
+
+/********************/
+/* Gradient classes */
+/********************/
+.green {
+    background: linear-gradient(135deg, rgba(210, 255, 82, 1) 0%, rgba(210, 255, 82, 1) 24%, rgba(145, 232, 66, 1) 100%);
+}
+
+.yellow {
+    background: linear-gradient(135deg, rgba(241, 231, 103, 1) 0%, rgba(254, 182, 69, 1) 100%);
+}
+
+.pink {
+    background: linear-gradient(135deg, rgba(250, 160, 236, 1) 0%, rgba(242, 61, 148, 1) 100%);
+}
+
+.orange {
+    background: linear-gradient(135deg, rgba(250, 245, 160, 1) 0%, rgba(219, 85, 37, 1) 100%);
+}
+
+.blue {
+    background: linear-gradient(135deg, rgba(160, 193, 250, 1) 0%, rgba(40, 217, 240, 1) 100%);
+}
+
+.purple {
+    background: linear-gradient(135deg, rgba(235, 233, 249, 1) 0%, rgba(193, 191, 234, 1) 100%);
+}
+
+.white {
+    background: linear-gradient(135deg, rgba(204,249,251,1) 0%, rgba(255,255,255,1) 100%);
+}
