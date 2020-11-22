@@ -34,7 +34,60 @@
 /*---------------------*/
 /*    HTML ELEMENTS    */
 /*---------------------*/
+@font-face {
+    font-family: VagRounded;
+    src: url("../fonts/vagroundedstd-bold-webfont.woff") format("woff");
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.1rem;
+}
+
+h1, h2, h3 {
+    font-family: VagRounded, sans-serif;
+}
+
+
+h1 {
+    text-transform: lowercase;
+    color: #44c8f5;
+    font-size: 2.2rem;
+}
+
+img {
+    width: 100%;
+}
 
 /*---------------------*/
 /* CONTAINING ELEMENTS */
 /*---------------------*/
+.flexContainer {
+    display: flex;
+}
+
+header {
+    margin-bottom: 2%;
+}
+
+header .flexContainer {
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 2%;
+    background-color: rgba(30,35,39,0.9);
+}
+
+header h2 {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1% 0;
+}
+
+
+
