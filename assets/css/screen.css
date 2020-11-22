@@ -48,26 +48,39 @@ h1, h2, h3 {
     font-family: VagRounded, sans-serif;
 }
 
-
 h1 {
     text-transform: lowercase;
     color: #44c8f5;
     font-size: 2.2rem;
 }
 
-h2 {
-    font-size: 2rem;
-}
-
 img {
     width: 100%;
 }
 
+strong {
+    font-weight: bold;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: #a39e9e;
+}
 /*---------------------*/
 /* CONTAINING ELEMENTS */
 /*---------------------*/
 .flexContainer {
     display: flex;
+}
+
+.curriculumBuilderNavigationLinks {
+    color: #fff;
+    background-color: #44c8f5;
+    font-family: VagRounded, sans-serif;
+    padding: 1%;
+    border-radius: 0.2rem;
+    margin-bottom: 2%;
 }
 
 header {
@@ -96,11 +109,43 @@ main .leftAlignedContent {
     margin-left: 3%;
 }
 
+main .leftAlignedContent p {
+    margin-bottom: 0.8%;
+    color: #a39e9e;
+}
+
 main .rightAlignedContent {
     width: 12%;
     text-align: center;
     background-color: #44c8f5;
     color: #fff;
+}
+
+.introduction h2 {
+    font-size: 2rem;
+    margin-bottom: 2%;
+    background-image: url("../media/curriculum.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 4%;
+}
+
+.introduction p a {
+    color: #000;
+    background-color: #f5f2b6;
+    padding: 0.3% 0;
+}
+
+section>h2 {
+    font-size: 2rem;
+    margin-bottom: 2%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 4%;
+}
+
+.personalData h2 {
+    background-image: url("../media/personal-data.svg");
 }
 
 footer {
