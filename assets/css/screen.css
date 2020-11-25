@@ -78,18 +78,20 @@ a {
 
 label {
     display: block;
+    font-weight: bold;
+    color: #514d50;
 }
 
 button {
     background-color: #44c8f5;
     font-family: VagRounded, sans-serif;
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 /*---------------------*/
 /* CONTAINING ELEMENTS */
 /*---------------------*/
-.flexContainer {
+.flex-container {
     display: flex;
     justify-content: space-between;
 }
@@ -99,21 +101,22 @@ button {
     background-color: #44c8f5;
     font-family: VagRounded, sans-serif;
     padding: 1%;
-    border-radius: 0.2rem;
+    border-radius: 0.3rem;
+}
+
+.filters {
+    margin-bottom: 4%;
 }
 
 .modules {
-    display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    align-content: space-between;
 }
 
 header {
     margin-bottom: 2%;
 }
 
-header .flexContainer {
+header .flex-container {
     align-items: center;
     padding: 1% 2%;
     background-color: rgba(30,35,39,0.9);
@@ -124,26 +127,26 @@ header h2 {
     font-size: 1rem;
 }
 
-main .leftAlignedContent {
+main #left-aligned-content {
     width: 80%;
     margin-right: 3rem;
     margin-left: 3%;
 }
 
-main .leftAlignedContent article {
+main #left-aligned-content article {
     margin-bottom: 2%;
 }
 
-main .leftAlignedContent section {
+main #left-aligned-content section {
     margin-bottom: 2%;
 }
 
-main .leftAlignedContent p {
+main #left-aligned-content p {
     margin-bottom: 0.8%;
     color: #514d50;
 }
 
-.introduction h2 {
+#introduction h2 {
     margin-bottom: 2%;
     background-image: url("../media/curriculum.svg");
     background-repeat: no-repeat;
@@ -151,7 +154,7 @@ main .leftAlignedContent p {
     padding-left: 4%;
 }
 
-.introduction p a {
+#introduction p a {
     background-color: #f5f2b6;
     padding: 0.3% 0;
 }
@@ -163,35 +166,65 @@ section > h2 {
     padding-left: 4%;
 }
 
-.personalData h2 {
+#personal-data h2 {
     background-image: url("../media/personal-data.svg");
 }
 
-.completedCourses>h2 {
+#personal-data label {
+    padding-bottom: 0.5%;
+}
+
+#personal-data input {
+    width: 100%;
+    background-color: #f8f4f4;
+    border: none;
+    padding: 1.5%;
+    font-size: 1.5rem;
+    margin-bottom: 2%;
+    color: #a39e9e;
+    font-family: VagRounded, sans-serif;
+}
+
+#personal-data input:focus {
+    color: #fff;
+    background-color: #a39e9e;
+    outline: none;
+}
+
+#personal-data input[type="number"] {
+    width: 20%;
+    display: block;
+}
+
+#personal-data button {
+    background-color: #44c8f5;
+    color: #fff;
+    font-family: VagRounded, sans-serif;
+    border: none;
+    padding: 1%;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+}
+#completed-courses  > h2 {
     background-image: url("../media/completed-courses.svg");
 }
 
-.completedCourses ol li {
+#completed-courses ol li {
     display: inline-block;
-    background-color: #f8f4f4;
-    padding: 0.5%;
+    background-image: url("../media/check.svg");
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding-top: 10px;
 }
 
-.completedCourses ol li a {
+#completed-courses ol li a {
     font-family: VagRounded, sans-serif;
     color: #a39e9e;
+    background-color: #f8f4f4;
+    padding: 0.4rem;
 }
 
-.completedCourses ol li:first-child {
-    background-color: #60cf60;
-    background-image: url("../media/check.svg");
-}
-
-.completedCourses ol li:first-child a {
-    color: #fff;
-}
-
-.completedCourses label {
+#completed-courses label {
     text-transform: lowercase;
 }
 
@@ -207,12 +240,19 @@ section > h2 {
     font-size: 1.2rem;
 }
 
+figure {
+    line-height: 200%;
+    height: 10rem;
+    font-size: 5rem;
+}
+
 .modules p {
     border: 1px dashed #514d50;
     border-radius: 50%;
+    display: inline-block;
 }
 
-.overview h2 {
+#overview h2 {
     background-image: url("../media/overview.svg");
 }
 
@@ -224,7 +264,7 @@ section > h2 {
     background-image: url("../media/thank-you.svg");
 }
 
-main .rightAlignedContent {
+main #right-aligned-content {
     width: 12%;
     text-align: center;
     background-color: #44c8f5;

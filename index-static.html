@@ -5,12 +5,12 @@
     <title>Howest Trajectbuilder</title>
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/screen.css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
     <meta name="author" content="Rémi Defoor"/>
 </head>
 <body>
     <header>
-        <div class="flexContainer">
+        <div class="flex-container">
             <h1>Howest curriculum builder</h1>
 
             <h2>Create your individual curriculum</h2>
@@ -19,9 +19,9 @@
         <img src="images/howest.jpg" alt="HOWEST" title="HOWEST"/>
     </header>
 
-    <main class="flexContainer">
-        <div class="leftAlignedContent">
-            <article class="introduction">
+    <main class="flex-container">
+        <div id="left-aligned-content">
+            <article id="introduction">
                 <h2>Curriculum builder: the tool for tailored curricula</h2>
 
                 <p>
@@ -58,12 +58,12 @@
                     Go ahead and get started!
                 </p>
 
-                <ul class="curriculumBuilderNavigationLinks">
+                <ul class="curriculum-builder-navigation-links">
                     <li><a href="#">Enter personal data</a></li>
                 </ul>
             </article>
 
-            <section class="personalData">
+            <section id="personal-data">
                 <h2>Enter personal data</h2>
 
                 <p>
@@ -84,7 +84,7 @@
                 </form>
             </section>
 
-            <section class="completedCourses">
+            <section id="completed-courses">
                 <h2>Select the courses you have already completed</h2>
 
                 <p>
@@ -96,7 +96,7 @@
                     limited to courses from the first and second semester.
                 </p>
 
-                <div class="flexContainer">
+                <div class="filters flex-container">
                     <div>
                         <ol>
                             <li><a href="#">S1</a></li>
@@ -120,9 +120,11 @@
                     </form>
                 </div>
 
-                <div class="modules">
+                <div class="modules flex-container">
                     <article>
                         <h2>Software development 1</h2>
+
+                        <figure class="green"></figure>
 
                         <p>
                             6ECTS
@@ -221,7 +223,7 @@
                 </div>
 
                 <ul>
-                    <li><a href="#">< Modify personal data</a></li>
+                    <li><a href="#">&lt; Modify personal data</a></li>
                     <li><a href="#">Configure course curriculum ></a></li>
                 </ul>
             </section>
@@ -352,12 +354,12 @@
                 </article>
 
                 <ul>
-                    <li><a href="#">< Modify completed courses</a></li>
+                    <li><a href="#">&lt; Modify completed courses</a></li>
                     <li><a href="#">Choice overview ></a></li>
                 </ul>
             </section>
 
-            <section class="overview">
+            <section id="overview">
                 <h2>Choice overview</h2>
 
                 <p>
@@ -443,7 +445,7 @@
                 </table>
 
                 <ul>
-                    <li><a href="#">< Modify desired courses</a></li>
+                    <li><a href="#">&lt; Modify desired courses</a></li>
                     <li><a href="#">Submit curriculum</a></li>
                 </ul>
             </section>
@@ -457,17 +459,20 @@
             </section>
         </div>
 
-        <section class="rightAlignedContent">
+        <section id="right-aligned-content">
             <h3>quickview</h3>
 
             <p>
                 39 ECTS
             </p>
 
-            <dl>
-                <dt>39 ECTS left</dt>
-                <dd> 10% desired ects allocated</dd>
-            </dl>
+            <p>
+                39 ECTS left
+            </p>
+
+            <p>
+                10% desired ects allocated
+            </p>
 
             <ul>
                 <li>3 courses in S3</li>
