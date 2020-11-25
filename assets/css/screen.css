@@ -44,7 +44,7 @@ body {
     font-size: 1.1rem;
 }
 
-h1, h2, h3 {
+h1, h2 {
     font-family: VagRounded, sans-serif;
 }
 
@@ -52,6 +52,14 @@ h1 {
     text-transform: lowercase;
     color: #44c8f5;
     font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    color: #514d50;
 }
 
 img {
@@ -65,22 +73,40 @@ strong {
 a {
     display: inline-block;
     text-decoration: none;
-    color: #a39e9e;
+    color: #000;
+}
+
+label {
+    display: block;
+}
+
+button {
+    background-color: #44c8f5;
+    font-family: VagRounded, sans-serif;
+    color: #fff;
+    font-size: 2rem;
 }
 /*---------------------*/
 /* CONTAINING ELEMENTS */
 /*---------------------*/
 .flexContainer {
     display: flex;
+    justify-content: space-between;
 }
 
-.curriculumBuilderNavigationLinks {
+.curriculumBuilderNavigationLinks a {
     color: #fff;
     background-color: #44c8f5;
     font-family: VagRounded, sans-serif;
     padding: 1%;
     border-radius: 0.2rem;
-    margin-bottom: 2%;
+}
+
+.modules {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: space-between;
 }
 
 header {
@@ -88,7 +114,6 @@ header {
 }
 
 header .flexContainer {
-    justify-content: space-between;
     align-items: center;
     padding: 1% 2%;
     background-color: rgba(30,35,39,0.9);
@@ -99,30 +124,26 @@ header h2 {
     font-size: 1rem;
 }
 
-main.flexContainer {
-    justify-content: space-between;
-}
-
 main .leftAlignedContent {
     width: 80%;
     margin-right: 3rem;
     margin-left: 3%;
 }
 
-main .leftAlignedContent p {
-    margin-bottom: 0.8%;
-    color: #a39e9e;
+main .leftAlignedContent article {
+    margin-bottom: 2%;
 }
 
-main .rightAlignedContent {
-    width: 12%;
-    text-align: center;
-    background-color: #44c8f5;
-    color: #fff;
+main .leftAlignedContent section {
+    margin-bottom: 2%;
+}
+
+main .leftAlignedContent p {
+    margin-bottom: 0.8%;
+    color: #514d50;
 }
 
 .introduction h2 {
-    font-size: 2rem;
     margin-bottom: 2%;
     background-image: url("../media/curriculum.svg");
     background-repeat: no-repeat;
@@ -131,13 +152,11 @@ main .rightAlignedContent {
 }
 
 .introduction p a {
-    color: #000;
     background-color: #f5f2b6;
     padding: 0.3% 0;
 }
 
-section>h2 {
-    font-size: 2rem;
+section > h2 {
     margin-bottom: 2%;
     background-repeat: no-repeat;
     background-position: left center;
@@ -146,6 +165,72 @@ section>h2 {
 
 .personalData h2 {
     background-image: url("../media/personal-data.svg");
+}
+
+.completedCourses>h2 {
+    background-image: url("../media/completed-courses.svg");
+}
+
+.completedCourses ol li {
+    display: inline-block;
+    background-color: #f8f4f4;
+    padding: 0.5%;
+}
+
+.completedCourses ol li a {
+    font-family: VagRounded, sans-serif;
+    color: #a39e9e;
+}
+
+.completedCourses ol li:first-child {
+    background-color: #60cf60;
+    background-image: url("../media/check.svg");
+}
+
+.completedCourses ol li:first-child a {
+    color: #fff;
+}
+
+.completedCourses label {
+    text-transform: lowercase;
+}
+
+.modules article {
+    background-color: #f8f4f4;
+    padding: 1rem;
+    width: 30%;
+    border-radius: 0.8rem;
+    text-align: center;
+}
+
+.modules h2 {
+    font-size: 1.2rem;
+}
+
+.modules p {
+    border: 1px dashed #514d50;
+    border-radius: 50%;
+}
+
+.overview h2 {
+    background-image: url("../media/overview.svg");
+}
+
+#submission {
+    margin-bottom: 3%;
+}
+
+#submission h2 {
+    background-image: url("../media/thank-you.svg");
+}
+
+main .rightAlignedContent {
+    width: 12%;
+    text-align: center;
+    background-color: #44c8f5;
+    color: #fff;
+    margin-bottom: 3%;
+    border-radius: 2rem 0 0 2rem;
 }
 
 footer {
