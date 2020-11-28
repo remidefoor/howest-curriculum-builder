@@ -58,7 +58,7 @@
                     Go ahead and get started!
                 </p>
 
-                <ul class="curriculum-builder-navigation-links">
+                <ul class="navigation-links">
                     <li><a href="#">Enter personal data</a></li>
                 </ul>
             </article>
@@ -234,7 +234,7 @@
                     </article>
                 </div>
 
-                <ul class="curriculum-builder-navigation-links flex-container">
+                <ul class="navigation-links flex-container">
                     <li><a href="#">&lt; Modify personal data</a></li>
                     <li><a href="#">Configure course curriculum ></a></li>
                 </ul>
@@ -385,7 +385,7 @@
                     </article>
                 </div>
 
-                <ul class="curriculum-builder-navigation-links flex-container">
+                <ul class="navigation-links flex-container">
                     <li><a href="#">&lt; Modify completed courses</a></li>
                     <li><a href="#">Choice overview ></a></li>
                 </ul>
@@ -400,14 +400,14 @@
                     Once your application has been submitted, there is no turning back!
                 </p>
 
-                <ul>
-                    <li>
+                <ul id="ECTS-counters" class="flex-container">
+                    <li id="completed-ECTS-counter">
                         <h3>Completed ECTS</h3>
                         <p>
                             60
                         </p>
                     </li>
-                    <li>
+                    <li id="desired-ECTS-counter">
                         <h3>Desired ECTS</h3>
                         <p>
                             34
@@ -419,15 +419,15 @@
                     <thead>
                     <tr>
                         <th colspan="3">completed courses</th>
-                        <th colspan="3">desired courses</th>
+                        <th class="right-part-table" colspan="3">desired courses</th>
                     </tr>
                     <tr>
                         <th>semester</th>
                         <th>module</th>
                         <th># SP</th>
-                        <th>semester</th>
-                        <th>module</th>
-                        <th># SP</th>
+                        <th class="right-part-table">semester</th>
+                        <th class="right-part-table">module</th>
+                        <th class="right-part-table"># SP</th>
                     </tr>
                     </thead>
 
@@ -436,23 +436,23 @@
                         <td>S1</td>
                         <td>Web development</td>
                         <td>6ECTS</td>
-                        <td>S3</td>
-                        <td>Web Technology</td>
-                        <td>9ECTS</td>
+                        <td class="right-part-table">S3</td>
+                        <td class="right-part-table">Web Technology</td>
+                        <td class="right-part-table">9ECTS</td>
                     </tr>
                     <tr>
                         <td>S1</td>
                         <td>Web development</td>
                         <td>6ECTS</td>
-                        <td>S3</td>
-                        <td>Web Technology</td>
-                        <td>9ECTS</td>
+                        <td class="right-part-table">S3</td>
+                        <td class="right-part-table">Web Technology</td>
+                        <td class="right-part-table">9ECTS</td>
                     </tr>
                     <tr>
                         <td>S1</td>
                         <td>Web development</td>
                         <td>6ECTS</td>
-                        <td>S3</td>
+                        <td class="right-part-table">S3</td>
                         <td>Web Technology</td>
                         <td>9ECTS</td>
                     </tr>
@@ -476,7 +476,7 @@
                     </tfoot>
                 </table>
 
-                <ul>
+                <ul class="navigation-links flex-container">
                     <li><a href="#">&lt; Modify desired courses</a></li>
                     <li><a href="#">Submit curriculum</a></li>
                 </ul>
