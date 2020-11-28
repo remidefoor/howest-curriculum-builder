@@ -133,7 +133,7 @@
                         <h3>Mattias De Wael</h3>
 
                         <form method="post" action="#">
-                            <button>Completed</button>
+                            <button><span>Completed</span></button>
                         </form>
                     </article>
 
@@ -149,7 +149,7 @@
                         <h3>Mattias De Wael</h3>
 
                         <form method="post" action="#">
-                            <button>Completed</button>
+                            <button class="selected-module"><span>Completed</span></button>
                         </form>
                     </article>
 
@@ -165,7 +165,7 @@
                         <h3>Mattias De Wael</h3>
 
                         <form method="post" action="#">
-                            <button>Completed</button>
+                            <button><span>Completed</span></button>
                         </form>
                     </article>
 
@@ -181,7 +181,7 @@
                         </p>
 
                         <form method="post" action="#">
-                            <button>Completed</button>
+                            <button><span>Completed</span></button>
                         </form>
                     </article>
 
@@ -197,7 +197,7 @@
                         </p>
 
                         <form method="post" action="#">
-                            <button>Completed</button>
+                            <button><span>Completed</span></button>
                         </form>
                     </article>
 
@@ -213,7 +213,7 @@
                         </p>
 
                         <form method="post" action="#">
-                            <button>Completed</button>
+                            <button><span>Completed</span></button>
                         </form>
                     </article>
 
@@ -229,7 +229,7 @@
                         </p>
 
                         <form method="post" action="#">
-                            <button>Completed</button>
+                            <button><span>Completed</span></button>
                         </form>
                     </article>
                 </div>
@@ -240,146 +240,152 @@
                 </ul>
             </section>
 
-            <section>
+            <section id="curriculum-configurator">
                 <h2>Configure course curriculum</h2>
 
                 <p>
                     Select the courses you want to include in your curriculum next academic year
                 </p>
 
-                <ol>
-                    <li><a href="#">S1</a></li>
-                    <li><a href="#">S1</a></li>
-                    <li><a href="#">S1</a></li>
-                    <li><a href="#">S1</a></li>
-                    <li><a href="#">S1</a></li>
-                    <li><a href="#">S1</a></li>
-                </ol>
+                <div class="filters flex-container">
+                    <div>
+                        <ol>
+                            <li class="selected-semester"><a href="#">S1</a></li>
+                            <li><a href="#">S1</a></li>
+                            <li><a href="#">S1</a></li>
+                            <li><a href="#">S1</a></li>
+                            <li><a href="#">S1</a></li>
+                            <li><a href="#">S1</a></li>
+                        </ol>
 
-                <p>
-                    zichtbare semesters
-                </p>
-
-                <form method="post" action="#">
-                    <select name="moduleSortering" id="moduleSortering">
-                        <option value="oplopend">oplopend</option>
-                    </select>
-                    <label for="moduleSortering">Sorteer modules</label>
-                </form>
-
-                <article>
-                    <h2>Software development 1</h2>
-
-                    <figure class="green"></figure>
-
-                    <p>
-                        6ECTS
-                    </p>
-
-                    <h3>Mattias De Wael</h3>
+                        <p>
+                            zichtbare semesters
+                        </p>
+                    </div>
 
                     <form method="post" action="#">
-                        <button>Take course</button>
+                        <select name="moduleSortering" id="moduleSortering">
+                            <option value="oplopend">oplopend</option>
+                        </select>
+                        <label for="moduleSortering">Sorteer modules</label>
                     </form>
-                </article>
+                </div>
 
-                <article>
-                    <h2>Software development 1</h2>
+                <div class="modules flex-container">
+                    <article>
+                        <h2>Software development 1</h2>
 
-                    <figure class="green"></figure>
+                        <figure class="green"></figure>
 
-                    <p>
-                        6ECTS
-                    </p>
+                        <p>
+                            6ECTS
+                        </p>
 
-                    <h3>Mattias De Wael</h3>
+                        <h3>Mattias De Wael</h3>
 
-                    <form method="post" action="#">
-                        <button>Take course</button>
-                    </form>
-                </article>
+                        <form method="post" action="#">
+                            <button><span>Take course</span></button>
+                        </form>
+                    </article>
 
-                <article>
-                    <h2>Software development 1</h2>
+                    <article>
+                        <h2>Software development 1</h2>
 
-                    <figure class="green"></figure>
+                        <figure class="green"></figure>
 
-                    <p>
-                        6ECTS
-                    </p>
+                        <p>
+                            6ECTS
+                        </p>
 
-                    <h3>Mattias De Wael</h3>
+                        <h3>Mattias De Wael</h3>
 
-                    <form method="post" action="#">
-                        <button>Take course</button>
-                    </form>
-                </article>
+                        <form method="post" action="#">
+                            <button><span>Take course</span></button>
+                        </form>
+                    </article>
 
-                <article>
-                    <h2>Web Development</h2>
+                    <article>
+                        <h2>Software development 1</h2>
 
-                    <figure class="green"></figure>
+                        <figure class="green"></figure>
 
-                    <h3>Mattias De Wael</h3>
+                        <p>
+                            6ECTS
+                        </p>
 
-                    <p>
-                        6ECTS
-                    </p>
+                        <h3>Mattias De Wael</h3>
 
-                    <form method="post" action="#">
-                        <button>Take course</button>
-                    </form>
-                </article>
+                        <form method="post" action="#">
+                            <button><span>Take course</span></button>
+                        </form>
+                    </article>
 
-                <article>
-                    <h2>Databases</h2>
+                    <article>
+                        <h2>Web Development</h2>
 
-                    <figure class="green"></figure>
+                        <figure class="green"></figure>
 
-                    <h3>Mattias De Wael</h3>
+                        <h3>Mattias De Wael</h3>
 
-                    <p>
-                        6ECTS
-                    </p>
+                        <p>
+                            6ECTS
+                        </p>
 
-                    <form method="post" action="#">
-                        <button>Take course</button>
-                    </form>
-                </article>
+                        <form method="post" action="#">
+                            <button><span>Take course</span></button>
+                        </form>
+                    </article>
 
-                <article>
-                    <h2>Project II: Analysis and development project</h2>
+                    <article>
+                        <h2>Databases</h2>
 
-                    <figure class="green"></figure>
+                        <figure class="green"></figure>
 
-                    <h3>Mattias De Wael</h3>
+                        <h3>Mattias De Wael</h3>
 
-                    <p>
-                        6ECTS
-                    </p>
+                        <p>
+                            6ECTS
+                        </p>
 
-                    <form method="post" action="#">
-                        <button>Take course</button>
-                    </form>
-                </article>
+                        <form method="post" action="#">
+                            <button><span>Take course</span></button>
+                        </form>
+                    </article>
 
-                <article>
-                    <h2>Software development 1</h2>
+                    <article>
+                        <h2>Project II: Analysis and development project</h2>
 
-                    <figure class="green"></figure>
+                        <figure class="green"></figure>
 
-                    <h3>Mattias De Wael</h3>
+                        <h3>Mattias De Wael</h3>
 
-                    <p>
-                        6ECTS
-                    </p>
+                        <p>
+                            6ECTS
+                        </p>
 
-                    <form method="post" action="#">
-                        <button>Take course</button>
-                    </form>
-                </article>
+                        <form method="post" action="#">
+                            <button><span>Take course</span></button>
+                        </form>
+                    </article>
 
-                <ul>
+                    <article>
+                        <h2>Software development 1</h2>
+
+                        <figure class="green"></figure>
+
+                        <h3>Mattias De Wael</h3>
+
+                        <p>
+                            6ECTS
+                        </p>
+
+                        <form method="post" action="#">
+                            <button><span>Take course</span></button>
+                        </form>
+                    </article>
+                </div>
+
+                <ul class="curriculum-builder-navigation-links flex-container">
                     <li><a href="#">&lt; Modify completed courses</a></li>
                     <li><a href="#">Choice overview ></a></li>
                 </ul>

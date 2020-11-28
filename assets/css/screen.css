@@ -87,13 +87,20 @@ label {
 }
 
 button {
+    display: block;
+    width: 100%;
+    border-radius: 0;
+    border: none;
     background-color: #44c8f5;
+    padding: 3%;
+}
+
+span {
+    font-size: 1.2rem;
     color: #fff;
     font-family: VagRounded, sans-serif;
-    border: none;
-    padding: 1.5%;
-    font-size: 1rem;
-    border-radius: 0.3rem;
+    display: block;
+    width: 100%;
 }
 /*---------------------*/
 /* CONTAINING ELEMENTS */
@@ -199,8 +206,16 @@ section > h2 {
     display: block;
 }
 
-#completed-courses  > h2 {
-    background-image: url("../media/completed-courses.svg");
+#personal-data button {
+    background-color: #44c8f5;
+    color: #fff;
+    font-family: VagRounded, sans-serif;
+    border: none;
+    padding: 1.5%;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    display: inline-block;
+    width: auto;
 }
 
 .filters {
@@ -234,7 +249,7 @@ section > h2 {
     background-image: url("../media/check.svg");
     background-repeat: no-repeat;
     background-position: top center;
-    background-size: 28px;
+    background-size: contain;
 }
 
 .selected-semester a {
@@ -281,16 +296,24 @@ figure {
     margin-bottom: 5%;
 }
 
-.modules button {
-    background-color: #44c8f5;
-    font-family: VagRounded, sans-serif;
-    color: #fff;
-    font-size: 1.2rem;
-    border: none;
-    padding: 3%;
-    border-radius: 0;
-    display: block;
-    width: 100%;
+.selected-module {
+    background-color: #ec008c;
+    padding-left: 4.5%;
+}
+
+.selected-module span {
+    background-image: url("../media/check-white.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 30px;
+}
+
+#completed-courses > h2 {
+    background-image: url("../media/completed-courses.svg");
+}
+
+#curriculum-configurator > h2 {
+    background-image: url("../media/curriculum.svg");
 }
 
 #overview h2 {
