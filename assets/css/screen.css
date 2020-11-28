@@ -106,10 +106,16 @@ span {
 table {
     color: #514d50;
     width: 100%;
+    margin-bottom: 5%;
+    text-align: center;
 }
 
 thead, tfoot {
     font-weight: bold;
+}
+
+th, td {
+    padding: 1.2%;
 }
 /*---------------------*/
 /* CONTAINING ELEMENTS */
@@ -126,6 +132,10 @@ thead, tfoot {
     padding: 1rem;
     border-radius: 0.3rem;
     margin: 0;
+}
+
+.right-align {
+    text-align: right;
 }
 
 header {
@@ -332,6 +342,7 @@ figure {
 #ECTS-counters {
     font-family: VagRounded, sans-serif;
     margin-top: 1.2%;
+    margin-bottom: 1%;
 }
 
 #ECTS-counters li {
@@ -353,6 +364,34 @@ figure {
 
 #desired-ECTS-counter p {
     color: #ec008c;
+}
+
+.left-part-table {
+    background-color: rgba(60,200,245,0.3);
+}
+
+tbody tr:nth-child(even) .left-part-table {
+    background-color: rgba(60,200,245,0.1);
+}
+
+tbody  tr:nth-child(odd) .left-part-table {
+    background-color: rgba(60,200,245,0.2);
+}
+
+.right-part-table {
+    background-color: #ec008c;
+}
+
+thead .right-part-table, tfoot .right-part-table {
+    color: #fff;
+}
+
+tbody tr:nth-child(even) .right-part-table {
+    background-color: rgba(236,0,140,0.1);
+}
+
+tbody tr:nth-child(odd) .right-part-table {
+    background-color: rgba(232,241,244,0.4);
 }
 
 #submission {
