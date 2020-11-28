@@ -402,13 +402,53 @@ tbody tr:nth-child(odd) .right-part-table {
     background-image: url("../media/thank-you.svg");
 }
 
-main #right-aligned-content {
+#quickview {
     width: 12%;
     text-align: center;
     background-color: #44c8f5;
     color: #fff;
     margin-bottom: 3%;
-    border-radius: 2rem 0 0 2rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    padding: 1rem;
+}
+
+#quickview h3 {
+    font-family: VagRounded, sans-serif;
+    color: #fff;
+    margin-bottom: 15%;
+}
+
+#quickview p {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 3%;
+}
+
+#quickview p:first-of-type {
+    font-size: 2rem;
+    font-family: VagRounded, sans-serif;
+    margin-bottom: 0;
+}
+
+#quickview p:first-of-type + p {
+    font-size: 1.1rem;
+    margin-bottom: 20%;
+}
+
+#quickview p:last-of-type {
+    font-size: 0.7rem;
+    background-position: top center;
+    margin-bottom: 20%;
+}
+
+#quickview figure {
+    height: 1.5rem;
+    background-color: rgba(30,35,39,0.9);
+}
+
+#quickview figure figure {
+    width: 60%;
 }
 
 footer {
