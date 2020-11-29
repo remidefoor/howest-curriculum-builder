@@ -177,6 +177,7 @@ main #left-aligned-content section {
     background-image: url("../media/curriculum.svg");
     background-repeat: no-repeat;
     background-position: left center;
+    max-width: 100%;
     padding-left: 4%;
 }
 
@@ -186,6 +187,11 @@ main #left-aligned-content section {
     color: #000;
     font-family: "Open Sans", sans-serif;
     margin: 0;
+}
+
+#introduction p a:hover {
+    color: #fff;
+    background-color: #44c8f5;
 }
 
 section > h2 {
@@ -358,8 +364,21 @@ figure {
     font-size: 3rem;
 }
 
+#completed-ECTS-counter {
+    background-image: url("../media/arrow.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    padding-right: 13%;
+    margin-left: 16%;
+}
+
 #completed-ECTS-counter p {
     color: #44c8f5;
+}
+
+#desired-ECTS-counter {
+    margin-right: 15%;
 }
 
 #desired-ECTS-counter p {
