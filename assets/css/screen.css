@@ -1,4 +1,7 @@
-
+@font-face {
+    font-family: VagRounded;
+    src: url("../fonts/vagroundedstd-bold-webfont.woff") format("woff");
+}
 
 /********************/
 /* Gradient classes */
@@ -34,11 +37,6 @@
 /*---------------------*/
 /*    HTML ELEMENTS    */
 /*---------------------*/
-@font-face {
-    font-family: VagRounded;
-    src: url("../fonts/vagroundedstd-bold-webfont.woff") format("woff");
-}
-
 body {
     font-family: "Open Sans", sans-serif;
     font-size: 1.1rem;
@@ -46,16 +44,12 @@ body {
 
 h1, h2 {
     font-family: VagRounded, sans-serif;
+    font-size: 2rem;
 }
 
 h1 {
     text-transform: lowercase;
     color: #44c8f5;
-    font-size: 2.2rem;
-}
-
-h2 {
-    font-size: 2rem;
 }
 
 h3 {
@@ -64,10 +58,6 @@ h3 {
 
 img {
     width: 100%;
-}
-
-strong {
-    font-weight: bold;
 }
 
 a {
@@ -104,7 +94,6 @@ span {
     color: #fff;
     font-family: VagRounded, sans-serif;
     display: block;
-    width: 100%;
 }
 
 table {
@@ -121,6 +110,7 @@ thead, tfoot {
 th, td {
     padding: 1.2%;
 }
+
 /*---------------------*/
 /* CONTAINING ELEMENTS */
 /*---------------------*/
@@ -132,7 +122,6 @@ th, td {
 .navigation-links a {
     color: #fff;
     background-color: #44c8f5;
-    font-family: VagRounded, sans-serif;
     padding: 1rem;
     border-radius: 0.3rem;
     margin: 0;
@@ -140,6 +129,10 @@ th, td {
 
 .right-align {
     text-align: right;
+}
+
+strong {
+    font-weight: bold;
 }
 
 header {
@@ -157,11 +150,6 @@ header h2 {
     font-size: 1rem;
 }
 
-main p {
-    margin-bottom: 0.8%;
-    color: #514d50;
-}
-
 main #left-aligned-content {
     width: 80%;
     margin-right: 3rem;
@@ -172,17 +160,17 @@ main #left-aligned-content > article {
     margin-bottom: 3%;
 }
 
-main #left-aligned-content section {
-    margin-bottom: 3%;
+main p {
+    margin-bottom: 0.8rem;
+    color: #514d50;
 }
 
 #introduction h2 {
     margin-bottom: 2%;
     background-image: url("../media/curriculum.svg");
     background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 2.4%;
-    padding-left: 4%;
+    background-size: 31px;
+    padding-left: 47px;
 }
 
 #introduction p a {
@@ -198,12 +186,15 @@ main #left-aligned-content section {
     background-color: #44c8f5;
 }
 
+section {
+    margin-bottom: 3%;
+}
+
 section > h2 {
+    padding-left: 47px;
     margin-bottom: 2%;
+    background-size: 31px;
     background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 2.4%;
-    padding-left: 4%;
 }
 
 #personal-data h2 {
@@ -226,27 +217,29 @@ section > h2 {
     box-sizing: border-box;
 }
 
+#personal-data input[type="number"] {
+    width: 23%;
+    display: block;
+}
+
 #personal-data input:focus {
     color: #fff;
     background-color: #a39e9e;
     outline: none;
 }
 
-#personal-data input[type="number"] {
-    width: 23%;
-    display: block;
-}
-
 #personal-data button {
-    background-color: #44c8f5;
     color: #fff;
     font-family: VagRounded, sans-serif;
-    border: none;
     padding: 1.5%;
     font-size: 1rem;
     border-radius: 0.3rem;
     display: inline-block;
     width: auto;
+}
+
+#personal-data button:hover {
+    background-color: #44c8f5;
 }
 
 .filters {
@@ -308,7 +301,7 @@ section > h2 {
     margin-bottom: 1.5%;
 }
 
-figure {
+.modules figure {
     line-height: 200%;
     height: 10rem;
     font-size: 5rem;
@@ -344,7 +337,7 @@ figure {
 }
 
 #curriculum-configurator > h2 {
-    background-image: url("../media/curriculum.svg");
+    background-image: url("../media/new-courses.svg");
 }
 
 #overview h2 {
@@ -395,11 +388,11 @@ figure {
     background-color: rgba(60,200,245,0.3);
 }
 
-tbody tr:nth-child(even) .left-part-table {
+tbody  tr:nth-child(odd) .left-part-table {
     background-color: rgba(60,200,245,0.1);
 }
 
-tbody  tr:nth-child(odd) .left-part-table {
+tbody tr:nth-child(even) .left-part-table {
     background-color: rgba(60,200,245,0.2);
 }
 
@@ -411,16 +404,12 @@ thead .right-part-table, tfoot .right-part-table {
     color: #fff;
 }
 
-tbody tr:nth-child(even) .right-part-table {
-    background-color: rgba(236,0,140,0.1);
-}
-
 tbody tr:nth-child(odd) .right-part-table {
     background-color: rgba(232,241,244,0.4);
 }
 
-#submission {
-    margin-bottom: 3%;
+tbody tr:nth-child(even) .right-part-table {
+    background-color: rgba(236,0,140,0.1);
 }
 
 #submission h2 {
@@ -432,7 +421,6 @@ tbody tr:nth-child(odd) .right-part-table {
     text-align: center;
     background-color: #44c8f5;
     color: #fff;
-    margin-bottom: 3%;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
     padding: 1rem;
@@ -463,8 +451,8 @@ tbody tr:nth-child(odd) .right-part-table {
 
 #quickview p:last-of-type {
     font-size: 0.7rem;
-    background-position: top center;
     margin-bottom: 20%;
+    text-align: left;
 }
 
 #quickview figure {
@@ -476,12 +464,14 @@ tbody tr:nth-child(odd) .right-part-table {
     width: 60%;
 }
 
+#quickview li {
+    font-size: 1rem;
+    margin-bottom: 1%;
+}
+
 footer {
     background-color: #000;
     color: #fff;
     text-align: center;
     padding: 1% 0;
 }
-
-
-
