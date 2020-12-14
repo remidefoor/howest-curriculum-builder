@@ -127,6 +127,10 @@ th, td {
     margin: 0;
 }
 
+.hidden {
+    display: none;
+}
+
 .right-align {
     text-align: right;
 }
