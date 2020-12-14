@@ -1,0 +1,3 @@
+visibility switch
+- When a link is pressed
+    - Go the the page described by the link
