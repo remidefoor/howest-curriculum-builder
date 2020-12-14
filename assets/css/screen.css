@@ -127,9 +127,9 @@ th, td {
     margin: 0;
 }
 
-/*.hidden {
+.hidden {
     display: none;
-}*/
+}
 
 .right-align {
     text-align: right;
