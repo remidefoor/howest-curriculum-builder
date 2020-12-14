@@ -5,8 +5,8 @@ visibility switch
 personal data
 - Make input fields required
     - Add required attribute to css **
-    - name.length >= 2
-    - 3 <= ECTS <= 60
+    - name.length >= 2 **
+    - 3 <= ECTS <= 60 **
 - Submit
     - Save personal data to local storage
     - Go to completed courses page

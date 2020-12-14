@@ -70,15 +70,15 @@
                 In order to serve you correctly, we need to know some basic information first
             </p>
 
-            <form method="post" action="#">
+            <form name="personal-data" method="post" action="#">
                 <label for="name">name</label>
-                <input type="text" name="name" id="name" required/>
+                <input type="text" name="name" id="name" minlength="2" autofocus required/>
 
                 <label for="email">email</label>
                 <input type="email" name="email" id="email" required/>
 
                 <label for="available-ECTS">ECTS available for allocation </label>
-                <input type="number" name="available-ECTS" id="available-ECTS" required/>
+                <input type="number" name="available-ECTS" id="available-ECTS" min="3" max="60" required/>
 
                 <button>Configure completed courses ></button>
             </form>
