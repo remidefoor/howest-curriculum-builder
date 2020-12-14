@@ -1,17 +1,18 @@
 "use strict";
 
 /* Declare any global variables below this line, but before the first function call */
+//import {processPersonalData} from "./personal-data";
 
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
 
     // Fillings
-    val
+
     // Bindings
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
     // Delegates
-
+    //document.querySelector("#personal-data form").addEventListener("submit", processPersonalData);
     // Other initialisations
 
 }
