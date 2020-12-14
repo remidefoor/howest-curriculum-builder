@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
 
     // Fillings
-
+    val
     // Bindings
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
     // Delegates

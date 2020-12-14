@@ -1,3 +1,14 @@
 visibility switch
 - When a link is pressed
     - Go the the page described by the link **
+
+personal data
+- Make input fields required
+    - Add required attribute to css **
+    - name.length >= 2
+    - 3 <= ECTS <= 60
+- Submit
+    - Save personal data to local storage
+    - Go to completed courses page
+- If the personal data was submitted
+    - Complete personal data when reopening the website after closure
