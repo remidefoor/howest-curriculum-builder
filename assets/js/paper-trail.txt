@@ -2,6 +2,7 @@ visibility switch
 - When a link is pressed
     - Go the the page described by the link **
 
+
 personal data
 - Make input fields required
     - Add required attribute to css **
@@ -11,4 +12,23 @@ personal data
     - Save personal data to local storage **
     - Go to completed courses page **
 - If the personal data was submitted
-    - Complete personal data when reopening the website after closure
+    - Complete personal data when reopening the website after closure **
+
+
+Completed courses
+- On page load
+    - Remove all existing modules **
+    - Select all semesters **
+    - Add all modules
+- Sort modules
+    - When a filter is applied
+        - Load all modules of selected semesters in corresponding order
+- Add semester filter
+    - Get selected semesters
+    - Pas selected semesters to sort modules
+- When module is selected
+    - Add to list of completed modules
+    - Add selected module class
+- When module is deselected
+    - Remove from list of selected modules
+    - Remove selected module class
