@@ -34,8 +34,8 @@ const modules01 = [
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-    fillModules("#completed-courses", modules01, "Completed");
-    fillModules("#curriculum-configurator", modules01, "Take course ")
+    fillModules("#completed-courses", modules, "Completed");
+    fillModules("#curriculum-configurator", modules, "Take course ")
 }
 
 function delegateModuleAction(e) {

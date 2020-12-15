@@ -48,5 +48,3 @@ function savePersonalData(person){
     document.querySelector("#personal-data").classList.add("hidden");
     document.querySelector("#completed-courses").classList.remove("hidden");
 }
-
-//export {processPersonalData};

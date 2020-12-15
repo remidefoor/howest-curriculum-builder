@@ -25,7 +25,7 @@ Completed courses
         - Load all modules of selected semesters in corresponding order
 - Add semester filter
     - Get selected semesters
-    - Pas selected semesters to sort modules
+    - Pas selected semesters to sort module s
 - When module is selected
     - Add to list of completed modules
     - Add selected module class
