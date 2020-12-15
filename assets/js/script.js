@@ -11,7 +11,8 @@ function init() {
     // Bindings
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
     // Delegates
-    //document.querySelector("#personal-data form").addEventListener("submit", processPersonalData);
+    document.querySelectorAll(".filters li").forEach(li => li.addEventListener("click", changeFilter));
+
     // Other initialisations
 
 }

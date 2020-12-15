@@ -72,7 +72,7 @@
 
             <form name="personal-data" method="post" action="#">
                 <label for="name">name</label>
-                <input type="text" name="name" id="name" minlength="2" autofocus required/>
+                <input type="text" name="name" id="name" minlength="2" required/>
 
                 <label for="email">email</label>
                 <input type="email" name="email" id="email" required/>
@@ -99,12 +99,12 @@
             <div class="filters flex-container">
                 <div>
                     <ol>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
+                        <li class="selected-semester"><a href="#">S1</a></li>
+                        <li class="selected-semester"><a href="#">S2</a></li>
+                        <li class="selected-semester"><a href="#">S3</a></li>
+                        <li class="selected-semester"><a href="#">S4</a></li>
+                        <li class="selected-semester"><a href="#">S5</a></li>
+                        <li class="selected-semester"><a href="#">S6</a></li>
                     </ol>
 
                     <p>
@@ -113,10 +113,11 @@
                 </div>
 
                 <form method="post" action="#">
-                    <select name="courseSorting" id="courseSorting">
+                    <select name="completed-module-filter" id="completed-module-filter">
                         <option value="ascending">ascending</option>
+                        <option value="descending">descending</option>
                     </select>
-                    <label for="courseSorting">Sort courses</label>
+                    <label for="completed-module-filter">Sort courses</label>
                 </form>
             </div>
 
@@ -264,12 +265,12 @@
             <div class="filters flex-container">
                 <div>
                     <ol>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
-                        <li><a href="#">S1</a></li>
+                        <li class="selected-semester"><a href="#">S1</a></li>
+                        <li class="selected-semester"><a href="#">S2</a></li>
+                        <li class="selected-semester"><a href="#">S3</a></li>
+                        <li class="selected-semester"><a href="#">S4</a></li>
+                        <li class="selected-semester"><a href="#">S5</a></li>
+                        <li class="selected-semester"><a href="#">S6</a></li>
                     </ol>
 
                     <p>
@@ -278,10 +279,11 @@
                 </div>
 
                 <form method="post" action="#">
-                    <select name="moduleSortering" id="moduleSortering">
-                        <option value="oplopend">oplopend</option>
+                    <select name="desired-module-filter" id="desired-module-filter">
+                        <option value="ascending">ascending</option>
+                        <option value="descending">descending</option>
                     </select>
-                    <label for="moduleSortering">Sorteer modules</label>
+                    <label for="desired-module-filter">Sort courses</label>
                 </form>
             </div>
 
