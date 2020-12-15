@@ -10,6 +10,7 @@ function init() {
 
     // Bindings
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
+    document.querySelectorAll(".filters select").forEach(select => select.addEventListener("change", filterAndSortModules));
     // Delegates
     document.querySelectorAll(".filters li").forEach(li => li.addEventListener("click", changeFilter));
 
