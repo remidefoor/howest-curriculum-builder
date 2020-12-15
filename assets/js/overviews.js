@@ -49,11 +49,13 @@ function fillModules(selector, modules, buttonText) {
     for (const module of modules) {
         let res = `<article>
                    <h2>${module["module"]}</h2>
-                   <figure class="${module["colour"]}">${generateCourseAbbreviation(module["module"])}</figure>
+                   <figure class="${module["colour"]}">
+                       <figcaption>${generateCourseAbbreviation(module["module"])}</figcaption>
+                   </figure>
                    <p>${module["ects"]}ECTS</p>
                    <h3>${module["lecturer"]}</h3>
                    <form method="post" action="#">
-                        <button><span>${buttonText}</span></button>
+                       <button><span>${buttonText}</span></button>
                    </form>
                    </article>`;
         target.insertAdjacentHTML("beforeend", res);
