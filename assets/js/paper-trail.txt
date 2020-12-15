@@ -8,7 +8,7 @@ personal data
     - name.length >= 2 **
     - 3 <= ECTS <= 60 **
 - Submit
-    - Save personal data to local storage
-    - Go to completed courses page
+    - Save personal data to local storage **
+    - Go to completed courses page **
 - If the personal data was submitted
     - Complete personal data when reopening the website after closure
