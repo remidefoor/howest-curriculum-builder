@@ -78,22 +78,17 @@ label {
 
 button {
     display: block;
-    width: 100%;
-    border-radius: 0;
-    border: none;
     background-color: #44c8f5;
-    padding: 3%;
+    border: none;
+    color: #fff;
+    font-family: VagRounded, sans-serif;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 4% 0;
 }
 
 button:hover {
     background-color: #ec008c;
-}
-
-span {
-    font-size: 1.2rem;
-    color: #fff;
-    font-family: VagRounded, sans-serif;
-    display: block;
 }
 
 table {
@@ -331,14 +326,10 @@ section > h2 {
 
 .selected-module {
     background-color: #ec008c;
-    padding-left: 4.5%;
-}
-
-.selected-module span {
     background-image: url("../media/check-white.svg");
     background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 30px;
+    background-size: 32px;
+    background-position: left 16px center;
 }
 
 #completed-courses > h2 {
