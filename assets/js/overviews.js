@@ -8,6 +8,15 @@ function getVisibleSection() {
 function delegateModuleAction(e) {
     if (e.target.tagName === "BUTTON") {
         e.preventDefault();
+        if (getVisibleSection().id === "curriculum-configurator") {
+            let ECTSCurrentModule = parseInt(e.target.parentNode.querySelector("p").innerHTML[0]);
+            let withdrawnECTS = computeWithdrawnECTS(e) + ECTSCurrentModule;
+            if (withdrawnECTS > getStatedECTS()) {
+                alert(`Unable to withdraw more ECTS than stated: ${getStatedECTS()}`);
+                return false;
+            }
+        }
+
         e.target.classList.toggle("selected-module");
         const moduleName = e.target.parentNode.querySelector("h2").innerHTML;
         const modules = getCorrespondingArray();
@@ -57,6 +66,18 @@ function resetCurriculumConfigurator() {
         button.classList.remove("selected-module");
     })
     desiredModules = [];
+}
+
+function computeWithdrawnECTS(e) {
+    let selectedECTS = 0;
+    for (const module of desiredModules) {
+        selectedECTS += parseInt(module["ects"]);
+    }
+    return selectedECTS;
+}
+
+function getStatedECTS() {
+    return JSON.parse(localStorage.getItem("person"))["ECTS"];
 }
 
 function filterArray(mainArray, arrayOfRedundancies) {
@@ -110,4 +131,10 @@ function reselectModules(target, selectedModules) {
             module.querySelector("button").classList.add("selected-module");
         }
     });
+}
+
+function validateWithdrawnECTS(e) {
+    if (computeWithdrawnECTS(e) !== getStatedECTS()) {
+        e.stopImmediatePropagation();
+    }
 }

@@ -17,7 +17,7 @@ Completed courses
 - On page load
     - Remove all existing modules **
     - Select all semesters **
-    - Add all modules
+    - Add all modules **
 - Sort modules
     - When a filter is applied
         - Load all modules of selected semesters in corresponding order **
@@ -25,16 +25,16 @@ Completed courses
     - Get selected semesters **
     - Pas selected semesters to sort modules **
 - When module is selected
-    - Add to list of completed modules
-    - Add selected module class
+    - Add to list of completed modules **
+    - Add selected module class **
 - When module is deselected
-    - Remove from list of selected modules
-    - Remove selected module class
+    - Remove from list of selected modules **
+    - Remove selected module class **
 
 Curriculum configurator
     - If withdrawn ECTS > stated ECTS
-        - error message
-        - Cancel last selection
+        - error message **
+        - Cancel last selection **
     - If not all ECTS are allocated
-        - Block link to next page
-    - Modules can only be selected over three consecutive semesters
+        - Block link to next page **
+    - Modules can only be selected over three consecutive semesters  # todo
