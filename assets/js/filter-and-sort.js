@@ -7,7 +7,7 @@ function changeFilter(e) {
 }
 
 function filterAndSortModules(e) {
-    const visibleSection = document.querySelector("#left-aligned-content section:not(.hidden)");
+    const visibleSection = getVisibleSection();
     const selectedSemesters = getSelectedSemesters(visibleSection);
     const modules = getCorrespondingModules(visibleSection);
     const filteredModules = filterModules(modules, selectedSemesters);
