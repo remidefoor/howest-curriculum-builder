@@ -1,6 +1,7 @@
 "use strict";
 
 /* Declare any global variables below this line, but before the first function call */
+const completedModules = [];
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -13,6 +14,7 @@ function init() {
     document.querySelectorAll(".filters select").forEach(select => select.addEventListener("change", filterAndSortModules));
     // Delegates
     document.querySelectorAll(".filters li").forEach(li => li.addEventListener("click", changeFilter));
+    document.querySelector("#completed-courses .modules").addEventListener("click", delegateModuleAction);
 
     // Other initialisations
 

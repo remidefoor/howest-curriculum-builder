@@ -22,10 +22,10 @@ Completed courses
     - Add all modules
 - Sort modules
     - When a filter is applied
-        - Load all modules of selected semesters in corresponding order
+        - Load all modules of selected semesters in corresponding order **
 - Add semester filter
-    - Get selected semesters
-    - Pas selected semesters to sort module s
+    - Get selected semesters **
+    - Pas selected semesters to sort modules **
 - When module is selected
     - Add to list of completed modules
     - Add selected module class

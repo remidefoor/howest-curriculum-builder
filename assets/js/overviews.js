@@ -7,7 +7,19 @@ function init() {
 }
 
 function delegateModuleAction(e) {
+    e.preventDefault();
+    if (e.target.tagName === "BUTTON") {
+        e.target.classList.toggle("selected-module");
 
+    }
+}
+
+function findModule(moduleName) {
+    for (const module in modules) {
+        if (module["module"] === moduleName) {
+            return module;
+        }
+    }
 }
 
 function fillModules(selector, modules, buttonText) {
@@ -21,9 +33,7 @@ function fillModules(selector, modules, buttonText) {
                     </figure>
                     <p>${module["ects"]}ECTS</p>
                     <h3>${module["lecturer"]}</h3>
-                    <form method="post" action="#">
-                        <button><span>${buttonText}</span></button>
-                    </form>
+                    <button>${buttonText}</button>
                     </article>`;
         target.insertAdjacentHTML("beforeend", html);
     }
