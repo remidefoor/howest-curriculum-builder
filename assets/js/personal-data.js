@@ -9,16 +9,6 @@ function init() {
     document.forms["personal-data"].addEventListener("submit", processPersonalData);
 }
 
-function restoreUserData() {
-    const user = JSON.parse(localStorage.getItem("person"));
-    if (user) {
-        const form = document.forms["personal-data"];
-        form["name"].value = user["name"];
-        form["email"].value = user["email"];
-        form["available-ECTS"].value = user["ECTS"];
-    }
-}
-
 function processPersonalData(e) {
     e.preventDefault();
     const person = {name: "", email: "", ECTS: NaN};
@@ -47,4 +37,18 @@ function savePersonalData(person){
     localStorage.setItem("person", JSON.stringify(person));
     document.querySelector("#personal-data").classList.add("hidden");
     document.querySelector("#completed-courses").classList.remove("hidden");
+}
+
+function restoreUserData() {
+    const user = JSON.parse(localStorage.getItem("person"));
+    if (user) {
+        const form = document.forms["personal-data"];
+        form["name"].value = user["name"];
+        form["email"].value = user["email"];
+        form["available-ECTS"].value = user["ECTS"];
+    }
+}
+
+function removeUserData(e) {
+    localStorage.removeItem("person");
 }
