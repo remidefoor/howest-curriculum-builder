@@ -10,16 +10,27 @@ function delegateModuleAction(e) {
     e.preventDefault();
     if (e.target.tagName === "BUTTON") {
         e.target.classList.toggle("selected-module");
-
+        const moduleName = e.target.parentNode.querySelector("h2").innerHTML;
+        updateArrayOfModules(completedModules, moduleName);
     }
 }
 
-function findModule(moduleName) {
-    for (const module in modules) {
+function updateArrayOfModules(arrayOfModules, moduleName) {
+    const module = getModule(modules, moduleName);
+    if (getModule(completedModules, moduleName)) {
+        completedModules.splice(completedModules.indexOf(module));
+    } else {
+        completedModules.push(module);
+    }
+}
+
+function getModule(modules, moduleName) {
+    for (const module of modules) {
         if (module["module"] === moduleName) {
             return module;
         }
     }
+    return false;
 }
 
 function fillModules(selector, modules, buttonText) {

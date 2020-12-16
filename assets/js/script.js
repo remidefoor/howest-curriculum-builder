@@ -1,7 +1,7 @@
 "use strict";
 
 /* Declare any global variables below this line, but before the first function call */
-const completedModules = [];
+let completedModules = [];
 
 document.addEventListener("DOMContentLoaded", init);
 
