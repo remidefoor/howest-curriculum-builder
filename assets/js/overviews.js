@@ -1,26 +1,39 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", init);
-
-function init() {
-    fillModules("#completed-courses", modules, "Completed");
+function filterArray(mainArray, arrayOfRedundancies) {
+    return mainArray.filter(function (el) {
+        return !arrayOfRedundancies.includes(el);
+    })
 }
 
 function delegateModuleAction(e) {
-    e.preventDefault();
     if (e.target.tagName === "BUTTON") {
+        e.preventDefault();
         e.target.classList.toggle("selected-module");
         const moduleName = e.target.parentNode.querySelector("h2").innerHTML;
-        updateArrayOfModules(completedModules, moduleName);
+        const modules = getCorrespondingArray();
+        updateArrayOfModules(modules, moduleName);
+        if (modules === completedModules) {
+            clearCurriculumConfigurator();
+        }
+    }
+}
+
+function getCorrespondingArray() {
+    const visibleSection = document.querySelector("#left-aligned-content section:not(.hidden)");
+    if (visibleSection.id === "completed-courses") {
+        return completedModules;
+    } else {
+        return desiredModules;
     }
 }
 
 function updateArrayOfModules(arrayOfModules, moduleName) {
     const module = getModule(modules, moduleName);
-    if (getModule(completedModules, moduleName)) {
-        completedModules.splice(completedModules.indexOf(module));
+    if (getModule(arrayOfModules, moduleName)) {
+        arrayOfModules.splice(arrayOfModules.indexOf(module));
     } else {
-        completedModules.push(module);
+        arrayOfModules.push(module);
     }
 }
 
@@ -31,6 +44,12 @@ function getModule(modules, moduleName) {
         }
     }
     return false;
+}
+
+function clearCurriculumConfigurator() {
+    curriculumModules = filterArray(modules, completedModules);
+    fillModules("#curriculum-configurator", curriculumModules, "Take course");
+    desiredModules = [];
 }
 
 function fillModules(selector, modules, buttonText) {

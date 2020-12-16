@@ -9,7 +9,8 @@ function changeFilter(e) {
 function filterAndSortModules(e) {
     const visibleSection = document.querySelector("#left-aligned-content section:not(.hidden)");
     const selectedSemesters = getSelectedSemesters(visibleSection);
-    const filteredModules = filterModules(selectedSemesters);
+    const modules = getCorrespondingModules(visibleSection);
+    const filteredModules = filterModules(modules, selectedSemesters);
     const filteredAndSortedModules = sortModules(filteredModules, visibleSection);
     let buttonText;
     if (visibleSection.id === "completed-courses") {
@@ -29,7 +30,15 @@ function getSelectedSemesters(visibleSection) {
     return selectedSemesters;
 }
 
-function filterModules(selectedSemesters) {
+function getCorrespondingModules(visibleSection) {
+    if (visibleSection.id === "completed-courses") {
+        return modules;
+    } else {
+        return curriculumModules;
+    }
+}
+
+function filterModules(modules, selectedSemesters) {
     const filteredModules = [];
     for (const module of modules) {
         if (selectedSemesters.includes(module["semester"])) {

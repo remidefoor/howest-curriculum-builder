@@ -2,7 +2,6 @@ visibility switch
 - When a link is pressed
     - Go the the page described by the link **
 
-
 personal data
 - Make input fields required
     - Add required attribute to css **
@@ -13,7 +12,6 @@ personal data
     - Go to completed courses page **
 - If the personal data was submitted
     - Complete personal data when reopening the website after closure **
-
 
 Completed courses
 - On page load
@@ -32,3 +30,11 @@ Completed courses
 - When module is deselected
     - Remove from list of selected modules
     - Remove selected module class
+
+Curriculum configurator
+    - If withdrawn ECTS > stated ECTS
+        - error message
+        - Cancel last selection
+    - If not all ECTS are allocated
+        - Block link to next page
+    - Modules can only be selected over three consecutive semesters

@@ -2,19 +2,22 @@
 
 /* Declare any global variables below this line, but before the first function call */
 let completedModules = [];
+let curriculumModules = modules;
+let desiredModules = [];
 
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
 
     // Fillings
-
+    fillModules("#completed-courses", modules, "Completed");
+    fillModules("#curriculum-configurator", curriculumModules, "Take course");
     // Bindings
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
     document.querySelectorAll(".filters select").forEach(select => select.addEventListener("change", filterAndSortModules));
     // Delegates
     document.querySelectorAll(".filters li").forEach(li => li.addEventListener("click", changeFilter));
-    document.querySelector("#completed-courses .modules").addEventListener("click", delegateModuleAction);
+    document.querySelectorAll(".modules").forEach(div => div.addEventListener("click", delegateModuleAction));
 
     // Other initialisations
 
