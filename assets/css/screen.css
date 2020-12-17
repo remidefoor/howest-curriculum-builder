@@ -160,6 +160,10 @@ main p {
     color: #514d50;
 }
 
+#introduction {
+    margin-bottom: 3%;
+}
+
 #introduction h2 {
     margin-bottom: 2%;
     background-image: url("../media/curriculum.svg");
