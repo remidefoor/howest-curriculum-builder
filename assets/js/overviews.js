@@ -10,9 +10,9 @@ function delegateModuleAction(e) {
         e.preventDefault();
         if (getVisibleSection().id === "curriculum-configurator") {
             let ECTSCurrentModule = parseInt(e.target.parentNode.querySelector("p").innerHTML[0]);
-            let withdrawnECTS = computeWithdrawnECTS(e) + ECTSCurrentModule;
-            if (withdrawnECTS > getStatedECTS()) {
-                alert(`Unable to withdraw more ECTS than stated: ${getStatedECTS()}`);
+            let withdrawnECTS = computeAllocatedECTS(e) + ECTSCurrentModule;
+            if (withdrawnECTS > getWithdrawnECTS()) {
+                alert(`Unable to withdraw more ECTS than stated: ${getWithdrawnECTS()}`);
                 return false;
             }
         }
@@ -23,6 +23,9 @@ function delegateModuleAction(e) {
         updateArrayOfModules(modules, moduleName);
         if (modules === completedModules) {
             resetCurriculumConfigurator();
+        }
+        if (modules === desiredModules) {
+            fillQuickview();
         }
     }
 }
@@ -68,7 +71,7 @@ function resetCurriculumConfigurator() {
     desiredModules = [];
 }
 
-function computeWithdrawnECTS(e) {
+function computeAllocatedECTS() {
     let selectedECTS = 0;
     for (const module of desiredModules) {
         selectedECTS += parseInt(module["ects"]);
@@ -76,7 +79,7 @@ function computeWithdrawnECTS(e) {
     return selectedECTS;
 }
 
-function getStatedECTS() {
+function getWithdrawnECTS() {
     return JSON.parse(localStorage.getItem("person"))["ECTS"];
 }
 
@@ -134,7 +137,7 @@ function reselectModules(target, selectedModules) {
 }
 
 function validateWithdrawnECTS(e) {
-    if (computeWithdrawnECTS(e) !== getStatedECTS()) {
+    if (computeAllocatedECTS(e) !== getWithdrawnECTS()) {
         e.stopImmediatePropagation();
     }
 }

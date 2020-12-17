@@ -42,9 +42,9 @@ Curriculum configurator
 quickview
 - Display amount allocated ECTS
     - Calculate amount allocated ECTS **
-    - Display amount allocated ECTS
+    - Display amount allocated ECTS **
 - Display amount unallocated ECTS
-    - Calculate amount unallocated ECTS
+    - Calculate amount unallocated ECTS **
     - Display amount unallocated ECTS
 - Update progress bar
     - Calculate percentage allocated ECTS
