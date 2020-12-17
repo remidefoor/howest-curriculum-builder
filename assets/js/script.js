@@ -14,8 +14,9 @@ function init() {
     fillModules("#curriculum-configurator", curriculumModules, "Take course");
     // Bindings
     document.querySelector(".navigation-links a[href='#overview']").addEventListener("click", validateWithdrawnECTS);
-    document.querySelector(".navigation-links a[href='#submission']").addEventListener("click", removeUserData);
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
+    document.querySelector(".navigation-links a[href='#overview']").addEventListener("click", fillSummary);
+    document.querySelector(".navigation-links a[href='#submission']").addEventListener("click", removeUserData);
     document.querySelectorAll(".filters select").forEach(select => select.addEventListener("change", filterAndSortModules));
     // Delegates
     document.querySelectorAll(".filters li").forEach(li => li.addEventListener("click", changeFilter));

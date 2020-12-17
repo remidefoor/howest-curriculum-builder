@@ -1,7 +1,7 @@
 "use strict";
 
 function fillQuickview() {
-    let allocatedECTS = computeAllocatedECTS();
+    let allocatedECTS = computeTotalECTS(desiredModules);
     document.querySelector("#allocated-ECTS").innerHTML = allocatedECTS;
     let withdrawnECTS = getWithdrawnECTS();
     let unallocatedECTS = withdrawnECTS - allocatedECTS;

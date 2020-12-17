@@ -10,7 +10,7 @@ function delegateModuleAction(e) {
         e.preventDefault();
         if (getVisibleSection().id === "curriculum-configurator") {
             let ECTSCurrentModule = parseInt(e.target.parentNode.querySelector("p").innerHTML[0]);
-            let withdrawnECTS = computeAllocatedECTS(e) + ECTSCurrentModule;
+            let withdrawnECTS = computeTotalECTS(desiredModules) + ECTSCurrentModule;
             if (withdrawnECTS > getWithdrawnECTS()) {
                 alert(`Unable to withdraw more ECTS than stated: ${getWithdrawnECTS()}`);
                 return false;
@@ -71,9 +71,9 @@ function resetCurriculumConfigurator() {
     desiredModules = [];
 }
 
-function computeAllocatedECTS() {
+function computeTotalECTS(modules) {
     let selectedECTS = 0;
-    for (const module of desiredModules) {
+    for (const module of modules) {
         selectedECTS += parseInt(module["ects"]);
     }
     return selectedECTS;
@@ -137,7 +137,7 @@ function reselectModules(target, selectedModules) {
 }
 
 function validateWithdrawnECTS(e) {
-    if (computeAllocatedECTS(e) !== getWithdrawnECTS()) {
+    if (computeTotalECTS(desiredModules) !== getWithdrawnECTS()) {
         e.stopImmediatePropagation();
     }
 }
