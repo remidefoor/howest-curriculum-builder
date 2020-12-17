@@ -32,9 +32,23 @@ Completed courses
     - Remove selected module class **
 
 Curriculum configurator
-    - If withdrawn ECTS > stated ECTS
-        - error message **
-        - Cancel last selection **
-    - If not all ECTS are allocated
-        - Block link to next page **
-    - Modules can only be selected over three consecutive semesters  # todo
+- If withdrawn ECTS > stated ECTS
+    - error message **
+    - Cancel last selection **
+- If not all ECTS are allocated
+    - Block link to next page **
+- Modules can only be selected over three consecutive semesters  # todo
+
+quickview
+- Display amount allocated ECTS
+    - Calculate amount allocated ECTS **
+    - Display amount allocated ECTS
+- Display amount unallocated ECTS
+    - Calculate amount unallocated ECTS
+    - Display amount unallocated ECTS
+- Update progress bar
+    - Calculate percentage allocated ECTS
+    - Update percentage allocated ECTS in html
+    - Calculate percentage unallocated ECTS
+    - Display percentage unallocated ECTS
+- Display overview selected modules
