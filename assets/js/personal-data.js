@@ -35,6 +35,7 @@ function validateData(person){
 
 function savePersonalData(person){
     localStorage.setItem("person", JSON.stringify(person));
+    fillQuickview();
     document.querySelector("#personal-data").classList.add("hidden");
     document.querySelector("#completed-courses").classList.remove("hidden");
 }
