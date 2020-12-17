@@ -45,10 +45,9 @@ quickview
     - Display amount allocated ECTS **
 - Display amount unallocated ECTS
     - Calculate amount unallocated ECTS **
-    - Display amount unallocated ECTS
+    - Display amount unallocated ECTS **
 - Update progress bar
-    - Calculate percentage allocated ECTS
-    - Update percentage allocated ECTS in html
-    - Calculate percentage unallocated ECTS
-    - Display percentage unallocated ECTS
+    - Calculate percentage allocated ECTS **
+    - Update percentage allocated ECTS in html **
+    - Display percentage allocated ECTS **
 - Display overview selected modules
