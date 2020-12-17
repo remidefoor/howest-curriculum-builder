@@ -155,10 +155,6 @@ main #left-aligned-content {
     padding-left: 3%;
 }
 
-main #left-aligned-content > article {
-    margin-bottom: 3%;
-}
-
 main p {
     margin-bottom: 0.8rem;
     color: #514d50;
@@ -412,6 +408,10 @@ tbody tr:nth-child(even) .right-part-table {
     background-color: rgba(236,0,140,0.1);
 }
 
+#submission {
+    margin-bottom: 0;
+}
+
 #submission h2 {
     background-image: url("../media/thank-you.svg");
 }
@@ -433,26 +433,26 @@ tbody tr:nth-child(even) .right-part-table {
 }
 
 #quickview p {
-    font-size: 0.9rem;
     color: #fff;
-    margin-bottom: 3%;
+    margin-bottom: 20%;
 }
 
-#quickview p:first-of-type {
+#quickview #allocated-ECTS {
     font-size: 2rem;
     font-family: VagRounded, sans-serif;
     margin-bottom: 0;
 }
 
-#quickview p:first-of-type + p {
-    font-size: 1.1rem;
-    margin-bottom: 20%;
+#quickview #unallocated-ECTS {
+    font-size: 0.9rem;
+    margin-bottom: 3%;
 }
 
-#quickview p:last-of-type {
+#quickview #percentage-allocated-ECTS {
     font-size: 0.7rem;
-    margin-bottom: 20%;
     text-align: left;
+    margin-top: 1%;
+    margin-bottom: 18%;
 }
 
 #quickview figure {
@@ -460,13 +460,13 @@ tbody tr:nth-child(even) .right-part-table {
     background-color: rgba(30,35,39,0.9);
 }
 
-#quickview figure figure {
-    width: 0%;
+#quickview #progress-bar {
+    width: 0;
 }
 
 #quickview li {
-    font-size: 1rem;
-    margin-bottom: 1%;
+    font-size: 0.9rem;
+    margin-bottom: 2%;
 }
 
 footer {
