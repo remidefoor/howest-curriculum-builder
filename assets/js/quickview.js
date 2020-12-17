@@ -7,6 +7,7 @@ function fillQuickview() {
     let unallocatedECTS = withdrawnECTS - allocatedECTS;
     document.querySelector("#unallocated-ECTS").innerHTML = `${unallocatedECTS} ECTS left`;
     progressBar(withdrawnECTS, allocatedECTS);
+    ectsPerSemester();
 }
 
 function progressBar(desiredECTS, totalECTS){
@@ -34,7 +35,15 @@ function determineProgressBarColor(percentageAllocatedECTS) {
 }
 
 function ectsPerSemester(){
-
+    const target = document.querySelector("#quickview ul");
+    target.innerHTML = "";
+    const sortedModules = sortModulesBySemester(desiredModules);
+    const modulesPerSemester = getModulesPerSemester(sortedModules);
+    for (const semester in modulesPerSemester) {
+        let numberOfModules = modulesPerSemester[semester];
+        let li = `<li>${numberOfModules} ${determineNumberOfModule(numberOfModules)} in ${semester}</li>`;
+        target.insertAdjacentHTML("beforeend", li);
+    }
 }
 
 function sortModulesBySemester(modules) {
@@ -55,3 +64,24 @@ function sortModulesBySemester(modules) {
     });
 }
 
+function getModulesPerSemester(modules) {
+    const modulesPerSemester = {};
+    for (const module of modules) {
+        let semester = module["semester"];
+        if (typeof modulesPerSemester[semester] === "undefined") {
+            modulesPerSemester[semester] = 1
+        } else {
+             modulesPerSemester[semester] += 1;
+
+        }
+    }
+    return modulesPerSemester;
+}
+
+function determineNumberOfModule(amount) {
+    if (amount === 1) {
+        return "module"
+    } else {
+        return "modules"
+    }
+}

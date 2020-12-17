@@ -51,5 +51,10 @@ quickview
     - Update percentage allocated ECTS in html **
     - Display percentage allocated ECTS **
 - Display overview selected modules
-- Get desired modules
-- Sort desired modules
+    - Get desired modules **
+    - Sort desired modules **
+    - Create object with semester-numberOfModulesSemester **
+    - Loop over desired modules **
+        - Increment number of modules of semester **
+    - Loop over properties object **
+        - Insert data into html **
