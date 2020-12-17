@@ -11,7 +11,7 @@ function filterAndSortModules(e) {
     const selectedSemesters = getSelectedSemesters(visibleSection);
     const modules = getCorrespondingModules(visibleSection);
     const filteredModules = filterModules(modules, selectedSemesters);
-    const filteredAndSortedModules = sortModules(filteredModules, visibleSection);
+    const filteredAndSortedModules = sortModulesByName(filteredModules, visibleSection);
     let buttonText;
     if (visibleSection.id === "completed-courses") {
         buttonText = "Completed";
@@ -48,18 +48,20 @@ function filterModules(modules, selectedSemesters) {
     return filteredModules;
 }
 
-function sortModules(filteredModules, visibleSection) {
+function sortModulesByName(filteredModules, visibleSection) {
     let sortOrder = visibleSection.querySelector(".filters select").value;
     if (sortOrder === "ascending") {
         sortOrder = 1;
     } else {
         sortOrder = -1;
     }
-    filteredModules.sort(function (a, b) {
-        if (a["module"] > b["module"]) {
+    filteredModules.sort(function (M01, M02) {
+        if (M01["module"] > M02["module"]) {
             return sortOrder;
-        } else {
+        } else if (M01["module"] < M02["module"]) {
             return -sortOrder;
+        } else {
+            return 0
         }
     })
     return filteredModules;

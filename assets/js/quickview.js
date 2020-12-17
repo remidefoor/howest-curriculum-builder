@@ -37,3 +37,21 @@ function ectsPerSemester(){
 
 }
 
+function sortModulesBySemester(modules) {
+    return modules.sort(function (M01, M02) {
+        if (M01["semester"] < M01["semester"]) {
+            return -1
+        } else if (M01["semester"] > M02["semester"]) {
+            return 1
+        } else {
+            if (M01["module"] < M02["module"]) {
+                return -1
+            } else if (M01["module"] > M02["module"]) {
+                return 1
+            } else {
+                return 0
+            }
+        }
+    });
+}
+

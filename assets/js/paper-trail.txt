@@ -51,3 +51,5 @@ quickview
     - Update percentage allocated ECTS in html **
     - Display percentage allocated ECTS **
 - Display overview selected modules
+- Get desired modules
+- Sort desired modules
