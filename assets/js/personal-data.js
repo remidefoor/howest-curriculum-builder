@@ -9,7 +9,7 @@ function processPersonalData(e) {
     if (validateData(person)) {
         savePersonalData(person);
         fillQuickview();
-        switchPage(document.querySelector("#personal-data"), document.querySelector("#completed-courses"));
+        switchPage(document.querySelector("#personal-data"), "#completed-courses");
     }
 }
 
