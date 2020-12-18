@@ -8,7 +8,6 @@ let desiredModules = [];
 document.addEventListener("DOMContentLoaded", init);
 
 function init() {
-
     // Fillings
     fillModules("#completed-courses", modules, "Completed");
     fillModules("#curriculum-configurator", curriculumModules, "Take course");

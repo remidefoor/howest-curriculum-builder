@@ -60,9 +60,8 @@ quickview
         - Insert data into html **
 
 Choice overview
-- Display number of completed ECTS
-- Display number of stated ECTS
-- Display completed and allocated modules in table
-
-    - If amount of modules is odd
-        - Add padding
+- Display number of completed ECTS **
+- Display number of stated ECTS **
+- Display completed and allocated modules in table **
+    - If amount of modules is odd **
+        - Add padding **

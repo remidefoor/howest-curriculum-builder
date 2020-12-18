@@ -96,7 +96,7 @@ function fillModules(selector, modules, buttonText) {
     for (const module of modules) {
         let html = `<article>
                     <h2>${module["module"]}</h2>
-                    <figure class="${module["colour"]}">
+                    <figure class="${getRandomColor()}">
                         <figcaption>${generateCourseAbbreviation(module["module"])}</figcaption>
                     </figure>
                     <p>${module["ects"]}ECTS</p>
@@ -118,6 +118,12 @@ function getSelectedModules(visibleSection) {
 
 function removePredefinedModules(currentSection) {
     currentSection.innerHTML = "";
+}
+
+function getRandomColor() {
+    const colors = ["green", "yellow", "pink", "orange", "blue", "purple"];
+    let randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
 }
 
 function generateCourseAbbreviation(moduleName) {
