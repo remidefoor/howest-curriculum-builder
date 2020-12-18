@@ -34,7 +34,7 @@ function getCorrespondingModules(visibleSection) {
     if (visibleSection.id === "completed-courses") {
         return modules;
     } else {
-        return curriculumModules;
+        return allocatableModules;
     }
 }
 

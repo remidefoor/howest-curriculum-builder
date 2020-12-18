@@ -1,10 +1,5 @@
 "use strict";
 
-function getVisibleSection() {
-    return document.querySelector
-    ("#left-aligned-content section:not(.hidden), #left-aligned-content > article:not(.hidden)");
-}
-
 function delegateModuleAction(e) {
     if (e.target.tagName === "BUTTON") {
         e.preventDefault();
@@ -63,8 +58,8 @@ function resetCurriculumConfigurator() {
         li.classList.add("selected-semester");
     })
     curriculumConfigurator.querySelector(".filters select").selectedIndex = "0";
-    curriculumModules = filterArray(modules, completedModules);
-    fillModules("#curriculum-configurator", curriculumModules, "Take course");
+    allocatableModules = filterArray(modules, completedModules);
+    fillModules("#curriculum-configurator", allocatableModules, "Take course");
     curriculumConfigurator.querySelectorAll(".modules button").forEach(function (button) {
         button.classList.remove("selected-module");
     })
