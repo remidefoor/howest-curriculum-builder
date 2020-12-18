@@ -12,18 +12,38 @@ function fillSummary(e) {
 
 
 function fillTbody(parent) {
+    const sortedCompletedModules = sortModulesBySemester(completedModules);
+    const sortedSelectedModules = sortModulesBySemester(desiredModules);
+    console.log(sortedCompletedModules);
+    console.log(sortedSelectedModules);
     let i = 0;
     while (i < completedModules.length || i < desiredModules.length) {
-        let tr = `<tr>
-                      <td class="left-part-table right-align">${completedModules[i]["semester"]}</td>
-                      <td class="left-part-table">${completedModules[i]["module"]}</td>
-                      <td class="left-part-table">${completedModules[i]["ects"]}ECTS</td>
-                      <td class="right-part-table right-align">${desiredModules[i]["semester"]}</td>
-                      <td class="right-part-table">${desiredModules[i]["module"]}</td>
-                      <td class="right-part-table">${desiredModules[i]["ects"]}ECTS</td>
-                  </tr>`;
+        let leftPartTr = createTrPart(i, sortedCompletedModules, "left-part-table");
+        let rightPartTr = createTrPart(i, sortedSelectedModules, "right-part-table");
+        let tr = `${leftPartTr}
+                  ${rightPartTr}`;
         parent.querySelector("tbody").insertAdjacentHTML("beforeend", tr);
         i += 1
+    }
+}
+
+function createTrPart(i, modules, side) {
+    let leftTr;
+    if (i < modules.length) {
+        leftTr = `<td class="${side} right-align">${modules[i]["semester"]}</td>
+                  <td class="${side}">${modules[i]["module"]}</td> 
+                  <td class="${side}">${modules[i]["ects"]}ECTS</td>`;
+    } else {
+        leftTr = `<td class="${side} right-align"></td>
+                  <td class="${side}"></td>
+                  <td class="${side}"></td>`;
+    }
+    if (modules === completedModules) {
+        return  leftTr = `<tr>
+                              ${leftTr}`;
+    } else {
+        return leftTr = `    ${leftTr}
+                         </tr>`;
     }
 }
 
