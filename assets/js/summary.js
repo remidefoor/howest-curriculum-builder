@@ -12,7 +12,19 @@ function fillSummary(e) {
 
 
 function fillTbody(parent) {
-
+    let i = 0;
+    while (i < completedModules.length || i < desiredModules.length) {
+        let tr = `<tr>
+                      <td class="left-part-table right-align">${completedModules[i]["semester"]}</td>
+                      <td class="left-part-table">${completedModules[i]["module"]}</td>
+                      <td class="left-part-table">${completedModules[i]["ects"]}ECTS</td>
+                      <td class="right-part-table right-align">${desiredModules[i]["semester"]}</td>
+                      <td class="right-part-table">${desiredModules[i]["module"]}</td>
+                      <td class="right-part-table">${desiredModules[i]["ects"]}ECTS</td>
+                  </tr>`;
+        parent.querySelector("tbody").insertAdjacentHTML("beforeend", tr);
+        i += 1
+    }
 }
 
 function filltfoot(parent, completedECTS, withdrawnECTS) {
