@@ -13,7 +13,7 @@ function filterAndSortModules(e) {
     const filteredModules = filterModules(modules, selectedSemesters);
     const filteredAndSortedModules = sortModulesByName(filteredModules, visibleSection);
     let buttonText;
-    if (visibleSection.id === "completed-courses") {
+    if (visibleSection.id === "completed-modules") {
         buttonText = "Completed";
     } else {
         buttonText = "Take course";
@@ -26,16 +26,8 @@ function getSelectedSemesters(visibleSection) {
     const selectedSemesters = [];
     visibleSection.querySelectorAll(".filters li.selected-semester a").forEach(function (a) {
         selectedSemesters.push(a.innerHTML);
-    })
+    });
     return selectedSemesters;
-}
-
-function getCorrespondingModules(visibleSection) {
-    if (visibleSection.id === "completed-courses") {
-        return modules;
-    } else {
-        return allocatableModules;
-    }
 }
 
 function filterModules(modules, selectedSemesters) {
@@ -48,14 +40,9 @@ function filterModules(modules, selectedSemesters) {
     return filteredModules;
 }
 
-function sortModulesByName(filteredModules, visibleSection) {
-    let sortOrder = visibleSection.querySelector(".filters select").value;
-    if (sortOrder === "ascending") {
-        sortOrder = 1;
-    } else {
-        sortOrder = -1;
-    }
-    filteredModules.sort(function (M01, M02) {
+function sortModulesByName(modules, visibleSection) {
+    let sortOrder = determineSortOrder(visibleSection);
+    modules.sort(function (M01, M02) {
         if (M01["module"] > M02["module"]) {
             return sortOrder;
         } else if (M01["module"] < M02["module"]) {
@@ -63,6 +50,25 @@ function sortModulesByName(filteredModules, visibleSection) {
         } else {
             return 0
         }
-    })
-    return filteredModules;
+    });
+    return modules;
+}
+
+function determineSortOrder(visibleSection) {
+    let sortOrder = visibleSection.querySelector(".filters select").value;
+    if (sortOrder === "ascending") {
+        return sortOrder = 1;
+    } else {
+        return sortOrder = -1;
+    }
+}
+
+
+
+function getCorrespondingModules(visibleSection) {
+    if (visibleSection.id === "completed-modules") {
+        return modules;
+    } else {
+        return filterModules(modules, getItemFromLocalStorage("completedModules"));
+    }
 }

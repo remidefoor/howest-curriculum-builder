@@ -84,7 +84,7 @@
             </form>
         </section>
 
-        <section id="completed-courses" class="hidden">
+        <section id="completed-modules" class="hidden">
             <h2>Select the courses you have already completed</h2>
 
             <p>
@@ -113,11 +113,11 @@
                 </div>
 
                 <form method="post" action="#">
-                    <select name="completed-module-filter" id="completed-module-filter">
+                    <select name="module-sorter" id="completed-module-sorter">
                         <option value="ascending">ascending</option>
                         <option value="descending">descending</option>
                     </select>
-                    <label for="completed-module-filter">Sort courses</label>
+                    <label for="completed-module-sorter">Sort courses</label>
                 </form>
             </div>
 
@@ -126,11 +126,11 @@
 
             <ul class="navigation-links flex-container">
                 <li><a href="#personal-data">&lt; Modify personal data</a></li>
-                <li><a href="#curriculum-configurator">Configure course curriculum ></a></li>
+                <li><a href="#desired-modules">Configure course curriculum ></a></li>
             </ul>
         </section>
 
-        <section id="curriculum-configurator" class="hidden">
+        <section id="desired-modules" class="hidden">
             <h2>Configure course curriculum</h2>
 
             <p>
@@ -154,11 +154,11 @@
                 </div>
 
                 <form method="post" action="#">
-                    <select name="desired-module-filter" id="desired-module-filter">
+                    <select name="module-sorter" id="desired-module-sorter">
                         <option value="ascending">ascending</option>
                         <option value="descending">descending</option>
                     </select>
-                    <label for="desired-module-filter">Sort courses</label>
+                    <label for="desired-module-sorter">Sort courses</label>
                 </form>
             </div>
 
@@ -166,7 +166,7 @@
             </div>
 
             <ul class="navigation-links flex-container">
-                <li><a href="#completed-courses">&lt; Modify completed courses</a></li>
+                <li><a href="#completed-modules">&lt; Modify completed courses</a></li>
                 <li><a href="#overview">Choice overview ></a></li>
             </ul>
         </section>
@@ -223,7 +223,7 @@
             </table>
 
             <ul class="navigation-links flex-container">
-                <li><a href="#curriculum-configurator">&lt; Modify desired courses</a></li>
+                <li><a href="#desired-modules">&lt; Modify desired courses</a></li>
                 <li><a href="#submission">Submit curriculum</a></li>
             </ul>
         </section>

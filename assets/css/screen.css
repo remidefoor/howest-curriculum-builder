@@ -332,11 +332,11 @@ section > h2 {
     background-position: left 16px center;
 }
 
-#completed-courses > h2 {
+#completed-modules > h2 {
     background-image: url("../media/completed-courses.svg");
 }
 
-#curriculum-configurator > h2 {
+#desired-modules > h2 {
     background-image: url("../media/new-courses.svg");
 }
 

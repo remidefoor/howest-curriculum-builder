@@ -17,8 +17,8 @@ function init() {
     if (getItemFromLocalStorage("person")) {
         fillPersonalData();
     }
-    fillModules("#completed-courses", modules, "Completed");
-    fillModules("#curriculum-configurator", modules, "Take course");
+    fillModules("#completed-modules", modules, "Completed");
+    fillModules("#desired-modules", modules, "Take course");
     // Bindings
     document.querySelector(".navigation-links a[href='#overview']").addEventListener("click", validateWithdrawnECTS);
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));

@@ -3,7 +3,7 @@
 function delegateModuleAction(e) {
     if (e.target.tagName === "BUTTON") {
         e.preventDefault();
-        if (getVisibleSection().id === "curriculum-configurator") {
+        if (getVisibleSection().id === "desired-modules") {
             let ECTSCurrentModule = parseInt(e.target.parentNode.querySelector("p").innerHTML[0]);
             let withdrawnECTS = computeTotalECTS(desiredModules) + ECTSCurrentModule;
             if (withdrawnECTS > getWithdrawnECTS()) {
@@ -27,7 +27,7 @@ function delegateModuleAction(e) {
 
 function getCorrespondingArray() {
     const visibleSection = getVisibleSection();
-    if (visibleSection.id === "completed-courses") {
+    if (visibleSection.id === "completed-modules") {
         return completedModules;
     } else {
         return desiredModules;
@@ -53,13 +53,13 @@ function getModule(modules, moduleName) {
 }
 
 function resetCurriculumConfigurator() {
-    const curriculumConfigurator = document.querySelector("#curriculum-configurator");
+    const curriculumConfigurator = document.querySelector("#desired-modules");
     curriculumConfigurator.querySelectorAll(".filters li").forEach(function (li) {
         li.classList.add("selected-semester");
     })
     curriculumConfigurator.querySelector(".filters select").selectedIndex = "0";
     allocatableModules = filterArray(modules, completedModules);
-    fillModules("#curriculum-configurator", allocatableModules, "Take course");
+    fillModules("#desired-modules", allocatableModules, "Take course");
     curriculumConfigurator.querySelectorAll(".modules button").forEach(function (button) {
         button.classList.remove("selected-module");
     })
@@ -83,6 +83,7 @@ function filterArray(mainArray, arrayOfRedundancies) {
         return !arrayOfRedundancies.includes(el);
     })
 }
+
 
 
 function fillModules(selector, modules, buttonText) {
@@ -122,7 +123,7 @@ function generateModuleAbbreviation(moduleName) {
 
 function checkModuleSelection(module, id) {
     let selectedModules;
-    if (id === "#completed-courses") {
+    if (id === "#completed-modules") {
         selectedModules = getItemFromLocalStorage("completedModules");
     } else {
         selectedModules = getItemFromLocalStorage("desiredModules");
@@ -135,6 +136,7 @@ function checkModuleSelection(module, id) {
     }
 
 }
+
 
 
 function validateWithdrawnECTS(e) {
