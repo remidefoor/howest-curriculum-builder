@@ -87,12 +87,22 @@ function getModule(moduleName) {
 }
 
 function updateArrayOfModules(modules, module) {
-    if (modules.includes(module)) {
-        modules.splice(modules.indexOf(module));
+    if (modules.some(moduleOfArray => moduleOfArray["module"] === module["module"])) {
+        console.log(getIndexOfModule(modules, module));
+        modules.splice(getIndexOfModule(modules, module), 1);
     } else {
         modules.push(module);
     }
     return modules;
+}
+
+function getIndexOfModule(modules, module) {
+    for (let i = 0; i < modules.length; i++) {
+        if (modules[i]["module"] === module["module"]) {
+            return i;
+        }
+    }
+    return NaN;
 }
 
 function toggleClass(el, className) {
@@ -144,12 +154,16 @@ function checkModuleSelection(module, id) {
         selectedModules = getItemFromLocalStorage("desiredModules");
     }
 
-    if (selectedModules.includes(module)) {
+    if (selectedModules.some(selectedModule => selectedModule["module"] === module["module"])) {
         return " class='selected-module'";
     } else {
         return "";
     }
 
+}
+
+function compareTwoModules(M01, M02) {
+    return M01["module"] === M02["module"];
 }
 
 
