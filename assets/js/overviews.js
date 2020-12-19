@@ -4,7 +4,7 @@ function delegateModuleAction(e) {
     if (e.target.tagName === "BUTTON" ) {
         const visibleSection = getVisibleSection();
         if (visibleSection.id === "completed-modules") {
-            handleCompletedModulesAction();
+            handleCompletedModulesAction(e);
         } else {
             handleDesiredModuleAction();
         }
@@ -46,38 +46,6 @@ function getCorrespondingArray() {
     }
 }
 
-function updateArrayOfModules(arrayOfModules, moduleName) {
-    const module = getModule(modules, moduleName);
-    if (getModule(arrayOfModules, moduleName)) {
-        arrayOfModules.splice(arrayOfModules.indexOf(module));
-    } else {
-        arrayOfModules.push(module);
-    }
-}
-
-function getModule(modules, moduleName) {
-    for (const module of modules) {
-        if (module["module"] === moduleName) {
-            return module;
-        }
-    }
-    return false;
-}
-
-function resetCurriculumConfigurator() {
-    const curriculumConfigurator = document.querySelector("#desired-modules");
-    curriculumConfigurator.querySelectorAll(".filters li").forEach(function (li) {
-        li.classList.add("selected-semester");
-    })
-    curriculumConfigurator.querySelector(".filters select").selectedIndex = "0";
-    allocatableModules = filterArray(modules, completedModules);
-    fillModules("#desired-modules", allocatableModules, "Take course");
-    curriculumConfigurator.querySelectorAll(".modules button").forEach(function (button) {
-        button.classList.remove("selected-module");
-    })
-    desiredModules = [];
-}
-
 function computeTotalECTS(modules) {
     let selectedECTS = 0;
     for (const module of modules) {
@@ -99,12 +67,32 @@ function filterArray(mainArray, arrayOfRedundancies) {
 
 
 
-function handleCompletedModulesAction() {
-
+function handleCompletedModulesAction(e) {
+    let moduleName = e.target.parentNode.querySelector("h2").innerHTML;
+    const completedModules = updateArrayOfModules(getItemFromLocalStorage("completedModules"), getModule(moduleName));
+    sendItemToLocalStorage("completedModules", completedModules);
+    toggleClass(e.target, "selected-module");
 }
 
 function handleDesiredModuleAction(){
 
+}
+
+function getModule(moduleName) {
+    for (const module of modules) {
+        if (module["module"] === moduleName) {
+            return module;
+        }
+    }
+}
+
+function updateArrayOfModules(modules, module) {
+    if (modules.includes(module)) {
+        modules.splice(modules.indexOf(module));
+    } else {
+        modules.push(module);
+    }
+    return modules;
 }
 
 function toggleClass(el, className) {
