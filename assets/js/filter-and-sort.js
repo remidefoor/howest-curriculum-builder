@@ -69,6 +69,6 @@ function getCorrespondingModules(visibleSection) {
     if (visibleSection.id === "completed-modules") {
         return modules;
     } else {
-        return filterModules(modules, getItemFromLocalStorage("completedModules"));
+        return filterArray(modules, getItemFromLocalStorage("completedModules"));
     }
 }

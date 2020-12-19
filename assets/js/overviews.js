@@ -69,12 +69,19 @@ function filterArray(mainArray, arrayOfRedundancies) {
 
 function handleCompletedModulesAction(e) {
     let moduleName = e.target.parentNode.querySelector("h2").innerHTML;
-    const completedModules = updateArrayOfModules(getItemFromLocalStorage("completedModules"), getModule(moduleName));
+    const module = getModule(moduleName);
+    const completedModules = updateArrayOfModules(getItemFromLocalStorage("completedModules"), module);
     sendItemToLocalStorage("completedModules", completedModules);
     toggleClass(e.target, "selected-module");
     if (e.target.matches("selected-module")) {
-
+        const desiredModules = getItemFromLocalStorage("desiredModules");
+        if (checkPresenceModule(desiredModules, module)) {
+            desiredModules.splice(getIndexOfModule(desiredModules, module));
+            sendItemToLocalStorage("desireModules", desiredModules);
+            fillQuickview();
+        }
     }
+    updateDesiredModulesSection();
 }
 
 function handleDesiredModuleAction(){
@@ -114,6 +121,24 @@ function toggleClass(el, className) {
 
 function checkPresenceModule(modules, module) {
     return modules.some(moduleOfArray => moduleOfArray["module"] === module["module"]);
+}
+
+function updateDesiredModulesSection() {
+    const section = document.querySelector("#desired-modules");
+    resetSemesters(section);
+    resetSelect(section);
+    const uncompletedModules = filterArray(modules, getItemFromLocalStorage("completedModules"));
+    fillModules("#desired-modules", uncompletedModules, "Take course");
+}
+
+function resetSemesters(section) {
+    section.querySelectorAll(".filters li").forEach(function (li) {
+        li.classList.add("selected-semester")
+    });
+}
+
+function resetSelect(section) {
+    section.querySelector(".filters select").selectedIndex = 0;
 }
 
 
