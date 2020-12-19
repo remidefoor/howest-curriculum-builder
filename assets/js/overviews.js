@@ -84,35 +84,26 @@ function filterArray(mainArray, arrayOfRedundancies) {
     })
 }
 
+
 function fillModules(selector, modules, buttonText) {
-    const target = document.querySelector(`${selector} .modules`);
-    const selectedModules = getSelectedModules(target);
-    removePredefinedModules(target);
+    const parent = document.querySelector(`${selector} .modules`);
+    removePreviousModules(parent);
     for (const module of modules) {
-        let html = `<article>
-                    <h2>${module["module"]}</h2>
-                    <figure class="${getRandomColor()}">
-                        <figcaption>${generateCourseAbbreviation(module["module"])}</figcaption>
-                    </figure>
-                    <p>${module["ects"]}ECTS</p>
-                    <h3>${module["lecturer"]}</h3>
-                    <button>${buttonText}</button>
-                    </article>`;
-        target.insertAdjacentHTML("beforeend", html);
+        let article = `<article>
+                           <h2>${module["module"]}</h2>
+                           <figure class="${getRandomColor()}">
+                               <figcaption>${generateModuleAbbreviation(module["module"])}</figcaption>
+                           </figure>
+                           <p>${module["ects"]}ECTS</p>
+                           <h3>${module["lecturer"]}</h3>
+                           <button${checkModuleSelection(module, selector)}>${buttonText}</button>
+                       </article>`;
+        parent.insertAdjacentHTML("beforeend", article);
     }
-    reselectModules(target, selectedModules);
 }
 
-function getSelectedModules(visibleSection) {
-    const selectedModules = [];
-    visibleSection.querySelectorAll("button.selected-module").forEach(function (button) {
-        selectedModules.push(button.parentNode.querySelector("h2").innerHTML);
-    });
-    return selectedModules;
-}
-
-function removePredefinedModules(currentSection) {
-    currentSection.innerHTML = "";
+function removePreviousModules(parent) {
+    parent.innerHTML = "";
 }
 
 function getRandomColor() {
@@ -121,21 +112,30 @@ function getRandomColor() {
     return colors[randomIndex];
 }
 
-function generateCourseAbbreviation(moduleName) {
+function generateModuleAbbreviation(moduleName) {
     const splitName = moduleName.split(" ");
-    for (let i=0; i < splitName.length; i++) {
+    for (let i; i < splitName.length; i++) {
         splitName[i] = splitName[i].charAt(0).toUpperCase();
     }
     return splitName.join("");
 }
 
-function reselectModules(target, selectedModules) {
-    target.querySelectorAll("article").forEach(function (module){
-        if (selectedModules.includes(module.querySelector("h2").innerHTML)) {
-            module.querySelector("button").classList.add("selected-module");
-        }
-    });
+function checkModuleSelection(module, id) {
+    let selectedModules;
+    if (id === "#completed-courses") {
+        selectedModules = getItemFromLocalStorage("completedModules");
+    } else {
+        selectedModules = getItemFromLocalStorage("desiredModules");
+    }
+
+    if (selectedModules.includes(module)) {
+        return " class='selected-module'";
+    } else {
+        return "";
+    }
+
 }
+
 
 function validateWithdrawnECTS(e) {
     if (computeTotalECTS(desiredModules) !== getWithdrawnECTS()) {

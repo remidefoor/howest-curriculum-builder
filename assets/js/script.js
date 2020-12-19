@@ -46,7 +46,7 @@ function handleNavigation(e) {
     switchPage(visibleSection, nextPage);
 }
 
-function switchPage(previousPage,nextPage){
+function switchPage(previousPage, nextPage){
     previousPage.classList.add("hidden");
     document.querySelector(nextPage).classList.remove("hidden");
 }
