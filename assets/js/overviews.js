@@ -115,7 +115,7 @@ function getRandomColor() {
 
 function generateModuleAbbreviation(moduleName) {
     const splitName = moduleName.split(" ");
-    for (let i; i < splitName.length; i++) {
+    for (let i = 0; i < splitName.length; i++) {
         splitName[i] = splitName[i].charAt(0).toUpperCase();
     }
     return splitName.join("");
