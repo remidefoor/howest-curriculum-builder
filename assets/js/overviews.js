@@ -72,6 +72,9 @@ function handleCompletedModulesAction(e) {
     const completedModules = updateArrayOfModules(getItemFromLocalStorage("completedModules"), getModule(moduleName));
     sendItemToLocalStorage("completedModules", completedModules);
     toggleClass(e.target, "selected-module");
+    if (e.target.matches("selected-module")) {
+
+    }
 }
 
 function handleDesiredModuleAction(){
@@ -87,7 +90,7 @@ function getModule(moduleName) {
 }
 
 function updateArrayOfModules(modules, module) {
-    if (modules.some(moduleOfArray => moduleOfArray["module"] === module["module"])) {
+    if (checkPresenceModule(modules, module)) {
         console.log(getIndexOfModule(modules, module));
         modules.splice(getIndexOfModule(modules, module), 1);
     } else {
@@ -107,6 +110,10 @@ function getIndexOfModule(modules, module) {
 
 function toggleClass(el, className) {
     el.classList.toggle(className);
+}
+
+function checkPresenceModule(modules, module) {
+    return modules.some(moduleOfArray => moduleOfArray["module"] === module["module"]);
 }
 
 
@@ -154,7 +161,7 @@ function checkModuleSelection(module, id) {
         selectedModules = getItemFromLocalStorage("desiredModules");
     }
 
-    if (selectedModules.some(selectedModule => selectedModule["module"] === module["module"])) {
+    if (checkPresenceModule(selectedModules, module)) {
         return " class='selected-module'";
     } else {
         return "";
