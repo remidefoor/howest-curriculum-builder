@@ -2,7 +2,7 @@
 
 function changeFilter(e) {
     e.preventDefault();
-    e.currentTarget.classList.toggle("selected-semester");
+    toggleClass(e.currentTarget, "selected-semester");
     filterAndSortModules(e);
 }
 

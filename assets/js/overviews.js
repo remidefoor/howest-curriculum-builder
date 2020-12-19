@@ -1,7 +1,19 @@
 "use strict";
 
 function delegateModuleAction(e) {
-    if (e.target.tagName === "BUTTON") {
+    if (e.target.tagName === "BUTTON" ) {
+        const visibleSection = getVisibleSection();
+        if (visibleSection.id === "completed-modules") {
+            handleCompletedModulesAction();
+        } else {
+            handleDesiredModuleAction();
+        }
+    }
+
+
+
+
+    /*if (e.target.tagName === "BUTTON") {
         e.preventDefault();
         if (getVisibleSection().id === "desired-modules") {
             let ECTSCurrentModule = parseInt(e.target.parentNode.querySelector("p").innerHTML[0]);
@@ -22,7 +34,7 @@ function delegateModuleAction(e) {
         if (modules === desiredModules) {
             fillQuickview();
         }
-    }
+    }*/
 }
 
 function getCorrespondingArray() {
@@ -82,6 +94,21 @@ function filterArray(mainArray, arrayOfRedundancies) {
     return mainArray.filter(function (el) {
         return !arrayOfRedundancies.includes(el);
     })
+}
+
+
+
+
+function handleCompletedModulesAction() {
+
+}
+
+function handleDesiredModuleAction(){
+
+}
+
+function toggleClass(el, className) {
+    el.classList.toggle(className);
 }
 
 
