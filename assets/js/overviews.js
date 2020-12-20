@@ -48,6 +48,7 @@ function handleDesiredModuleAction(e){
         }
         const allocatedSemesters = getAllocatedSemesters(getItemFromLocalStorage("desiredModules"));
         if (!determineAllocatableSemesters(allocatedSemesters).includes(module["semester"])) {
+            displayPossibilities(determineAllocatableSemesters(allocatedSemesters), e);
             return false;
         }
     }
@@ -55,6 +56,17 @@ function handleDesiredModuleAction(e){
     sendItemToLocalStorage("desiredModules", desiredModules);
     toggleClass(e.target, "selected-module");
     fillQuickview();
+}
+
+function displayPossibilities(allocatableSemesters, e) {
+    document.querySelectorAll("#desired-modules .filters a").forEach(function (a) {
+        if (allocatableSemesters.includes(a.innerHTML)) {
+            a.parentNode.classList.add("selected-semester");
+        } else {
+            a.parentNode.classList.remove("selected-semester");
+        }
+    });
+    filterAndSortModules(e);
 }
 
 function determineAllocatableSemesters(allocatedSemesters) {
