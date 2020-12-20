@@ -70,10 +70,11 @@ function determineAllocatableSemesters(allocatedSemesters) {
             let semester01 = parseInt(allocatedSemesters[0][1]);
             let semester02 = parseInt(allocatedSemesters[1][1]);
             if ((semester01 + 1) === semester02) {
-                allocatableSemesters = [createSemester(semester01, -1),
-                                       createSemester(semester02, 1)];
+                allocatableSemesters = [createSemester(semester01, -1), createSemester(semester01),
+                                       createSemester(semester02), createSemester(semester02, 1)];
             } else {
-                allocatableSemesters = [createSemester(semester01, 1)];
+                allocatableSemesters = [createSemester(semester01), createSemester(semester01, 1),
+                                        createSemester(semester02)];
             }
             break;
         case 3:
