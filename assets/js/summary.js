@@ -10,7 +10,6 @@ function fillSummary(e) {
     filltfoot(table, completedECTS, withdrawnECTS);
 }
 
-
 function fillTbody(parent) {
     const tBody = parent.querySelector("tbody");
     removeHTML(tBody);
@@ -39,7 +38,7 @@ function createTrPart(i, modules, side) {
                   <td class="${side}"></td>`;
     }
     if (side === "left-part-table") {
-        return  trPart = `<tr>
+        return trPart = `<tr>
                               ${trPart}`;
     } else {
         return trPart = `    ${trPart}
