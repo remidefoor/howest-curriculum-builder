@@ -1,9 +1,6 @@
 "use strict";
 
 /* Declare any global variables below this line, but before the first function call */
-let completedModules = [];
-let allocatableModules = modules;
-let desiredModules = [];
 
 document.addEventListener("DOMContentLoaded", init);
 

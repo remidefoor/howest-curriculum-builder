@@ -1,7 +1,7 @@
 "use strict";
 
 function fillSummary(e) {
-    let completedECTS = computeTotalECTS(completedModules).toString();
+    let completedECTS = computeTotalECTS(getItemFromLocalStorage("completedModules")).toString();
     document.querySelector("#overview #completed-ECTS-counter p").innerHTML = completedECTS;
     let withdrawnECTS = getWithdrawnECTS();
     document.querySelector("#overview #desired-ECTS-counter p").innerHTML = withdrawnECTS;
@@ -12,14 +12,12 @@ function fillSummary(e) {
 
 
 function fillTbody(parent) {
-    const sortedCompletedModules = sortModulesBySemester(completedModules);
-    const sortedSelectedModules = sortModulesBySemester(desiredModules);
-    console.log(sortedCompletedModules);
-    console.log(sortedSelectedModules);
+    const sortedCompletedModules = sortModulesBySemester(getItemFromLocalStorage("completedModules"));
+    const sortedDesiredModules = sortModulesBySemester(getItemFromLocalStorage("desiredModules"));
     let i = 0;
-    while (i < completedModules.length || i < desiredModules.length) {
+    while (i < sortedCompletedModules.length || i < sortedDesiredModules.length) {
         let leftPartTr = createTrPart(i, sortedCompletedModules, "left-part-table");
-        let rightPartTr = createTrPart(i, sortedSelectedModules, "right-part-table");
+        let rightPartTr = createTrPart(i, sortedDesiredModules, "right-part-table");
         let tr = `${leftPartTr}
                   ${rightPartTr}`;
         parent.querySelector("tbody").insertAdjacentHTML("beforeend", tr);
@@ -38,7 +36,7 @@ function createTrPart(i, modules, side) {
                   <td class="${side}"></td>
                   <td class="${side}"></td>`;
     }
-    if (modules === completedModules) {
+    if (modules === getItemFromLocalStorage("completedModules")) {
         return  leftTr = `<tr>
                               ${leftTr}`;
     } else {

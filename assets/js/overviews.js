@@ -59,8 +59,8 @@ function getWithdrawnECTS() {
 }
 
 function filterArray(mainArray, arrayOfRedundancies) {
-    return mainArray.filter(function (el) {
-        return !arrayOfRedundancies.includes(el);
+    return mainArray.filter(function (module) {
+        return !checkPresenceModule(arrayOfRedundancies, module);
     })
 }
 

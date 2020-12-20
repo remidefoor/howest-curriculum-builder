@@ -1,7 +1,7 @@
 "use strict";
 
 function fillQuickview() {
-    let allocatedECTS = computeTotalECTS(desiredModules);
+    let allocatedECTS = computeTotalECTS(getItemFromLocalStorage("desiredModules"));
     document.querySelector("#allocated-ECTS").innerHTML = allocatedECTS;
     let withdrawnECTS = getWithdrawnECTS();
     let unallocatedECTS = withdrawnECTS - allocatedECTS;
@@ -37,7 +37,7 @@ function determineProgressBarColor(percentageAllocatedECTS) {
 function ectsPerSemester(){
     const target = document.querySelector("#quickview ul");
     target.innerHTML = "";
-    const sortedModules = sortModulesBySemester(desiredModules);
+    const sortedModules = sortModulesBySemester(getItemFromLocalStorage("desiredModules"));
     const modulesPerSemester = getModulesPerSemester(sortedModules);
     for (const semester in modulesPerSemester) {
         let numberOfModules = modulesPerSemester[semester];
