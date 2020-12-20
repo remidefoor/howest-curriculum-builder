@@ -30,6 +30,14 @@ function getSelectedSemesters(visibleSection) {
     return selectedSemesters;
 }
 
+function getCorrespondingModules(visibleSection) {
+    if (visibleSection.id === "completed-modules") {
+        return modules;
+    } else {
+        return filterArray(modules, getItemFromLocalStorage("completedModules"));
+    }
+}
+
 function filterModules(modules, selectedSemesters) {
     const filteredModules = [];
     for (const module of modules) {
@@ -60,15 +68,5 @@ function determineSortOrder(visibleSection) {
         return sortOrder = 1;
     } else {
         return sortOrder = -1;
-    }
-}
-
-
-
-function getCorrespondingModules(visibleSection) {
-    if (visibleSection.id === "completed-modules") {
-        return modules;
-    } else {
-        return filterArray(modules, getItemFromLocalStorage("completedModules"));
     }
 }
