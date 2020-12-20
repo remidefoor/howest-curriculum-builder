@@ -1,5 +1,14 @@
 "use strict";
 
+function fillPersonalData() {
+    const form = document.forms["personal-data"];
+    const user = getItemFromLocalStorage("person");
+    form["name"].value = user["name"];
+    form["email"].value = user["email"];
+    form["available-ECTS"].value = user["ECTS"];
+}
+
+
 function processPersonalData(e) {
     e.preventDefault();
     const person = {name: "", email: "", ECTS: NaN};
@@ -31,13 +40,8 @@ function validateData(person){
     return true;
 }
 
-function savePersonalData(person){
-    sendItemToLocalStorage("person", person);
-}
-
 function compareObjects(object01,object02) {
     const keysObject01 = Object.keys(object01);
-    const keysObject02 = Object.keys(object02);
     for (const key of keysObject01) {
         if (object01[key] !== object02[key]) {
             return false;
@@ -52,13 +56,8 @@ function resetModules() {
     fillModules("#desired-modules", filterArray(modules, getItemFromLocalStorage("completedModules")), "Take course");
 }
 
-
-function fillPersonalData() {
-    const form = document.forms["personal-data"];
-    const user = getItemFromLocalStorage("person");
-    form["name"].value = user["name"];
-    form["email"].value = user["email"];
-    form["available-ECTS"].value = user["ECTS"];
+function savePersonalData(person){
+    sendItemToLocalStorage("person", person);
 }
 
 
