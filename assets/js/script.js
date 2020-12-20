@@ -30,10 +30,8 @@ function init() {
 
 
 function initializeLocalStorage() {
-    const completedModules = [];
-    sendItemToLocalStorage("completedModules", completedModules);
-    const desiredModules = [];
-    sendItemToLocalStorage("desiredModules", desiredModules);
+    sendItemToLocalStorage("completedModules", []);
+    sendItemToLocalStorage("desiredModules", []);
 }
 
 

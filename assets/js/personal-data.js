@@ -7,6 +7,11 @@ function processPersonalData(e) {
     person["email"] = e.currentTarget["email"].value;
     person["ECTS"] = parseInt(e.currentTarget["available-ECTS"].value);
     if (validateData(person)) {
+        if (getItemFromLocalStorage("person")) {
+            if (!compareObjects(person, getItemFromLocalStorage("person"))) {
+                resetModules();
+            }
+        }
         savePersonalData(person);
         fillQuickview();
         switchPage(document.querySelector("#personal-data"), "#completed-modules");
@@ -28,6 +33,24 @@ function validateData(person){
 
 function savePersonalData(person){
     sendItemToLocalStorage("person", person);
+}
+
+function compareObjects(object01,object02) {
+    const keysObject01 = Object.keys(object01);
+    const keysObject02 = Object.keys(object02);
+    for (const key of keysObject01) {
+        if (object01[key] !== object02[key]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function resetModules() {
+    sendItemToLocalStorage("completedModules", []);
+    sendItemToLocalStorage("desiredModules", []);
+    fillModules("#completed-modules", modules, "Completed");
+    fillModules("#desired-modules", filterArray(modules, getItemFromLocalStorage("completedModules")), "Take course");
 }
 
 
