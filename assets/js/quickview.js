@@ -70,6 +70,19 @@ function determineNumberOfModule(amount) {
 
 
 
+function computeTotalECTS(modules) {
+    let ECTS = 0;
+    for (const module of modules) {
+        ECTS += module["ects"];
+    }
+    return ECTS;
+}
+
+function getWithdrawnECTS() {
+    return getItemFromLocalStorage("person")["ECTS"];
+}
+
+
 function removeHTML(parent) {
     parent.innerHTML = "";
 }

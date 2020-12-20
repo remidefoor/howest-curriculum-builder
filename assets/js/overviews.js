@@ -11,13 +11,39 @@ function delegateModuleAction(e) {
     }
 }
 
-function filterArray(mainArray, arrayOfRedundancies) {
-    return mainArray.filter(function (module) {
-        return !checkPresenceModule(arrayOfRedundancies, module);
-    })
+function getModuleName(e) {
+    return e.target.parentNode.querySelector("h2").innerHTML;
 }
 
+function getModule(moduleName) {
+    for (const module of modules) {
+        if (module["module"] === moduleName) {
+            return module;
+        }
+    }
+}
 
+function updateArrayOfModules(modules, module) {
+    if (checkPresenceModule(modules, module)) {
+        modules.splice(getIndexOfModule(modules, module), 1);
+    } else {
+        modules.push(module);
+    }
+    return modules;
+}
+
+function checkPresenceModule(modules, module) {
+    return modules.some(moduleOfArray => moduleOfArray["module"] === module["module"]);
+}
+
+function getIndexOfModule(modules, module) {
+    for (let i = 0; i < modules.length; i++) {
+        if (modules[i]["module"] === module["module"]) {
+            return i;
+        }
+    }
+    return NaN;
+}
 
 
 function handleCompletedModuleAction(e) {
@@ -35,6 +61,25 @@ function handleCompletedModuleAction(e) {
     }
     updateDesiredModulesSection();
 }
+
+function updateDesiredModulesSection() {
+    const section = document.querySelector("#desired-modules");
+    resetSemesters(section);
+    resetSelect(section);
+    const uncompletedModules = filterArray(modules, getItemFromLocalStorage("completedModules"));
+    fillModules("#desired-modules", uncompletedModules, "Take course");
+}
+
+function resetSemesters(section) {
+    section.querySelectorAll(".filters li").forEach(function (li) {
+        li.classList.add("selected-semester")
+    });
+}
+
+function resetSelect(section) {
+    section.querySelector(".filters select").selectedIndex = 0;
+}
+
 
 function handleDesiredModuleAction(e){
     const module = getModule(getModuleName(e));
@@ -58,15 +103,15 @@ function handleDesiredModuleAction(e){
     fillQuickview();
 }
 
-function displayPossibilities(allocatableSemesters, e) {
-    document.querySelectorAll("#desired-modules .filters a").forEach(function (a) {
-        if (allocatableSemesters.includes(a.innerHTML)) {
-            a.parentNode.classList.add("selected-semester");
-        } else {
-            a.parentNode.classList.remove("selected-semester");
+function getAllocatedSemesters(modules) {
+    modules = sortModulesBySemester(modules);
+    const allocatedSemesters = [];
+    for (const module of modules) {
+        if (!allocatedSemesters.includes(module["semester"])) {
+            allocatedSemesters.push(module["semester"]);
         }
-    });
-    filterAndSortModules(e);
+    }
+    return allocatedSemesters;
 }
 
 function determineAllocatableSemesters(allocatedSemesters) {
@@ -75,18 +120,18 @@ function determineAllocatableSemesters(allocatedSemesters) {
         case 1:
             let semester = parseInt(allocatedSemesters[0][1]);
             allocatableSemesters = [createSemester(semester, -2), createSemester(semester, -1),
-                                   createSemester(semester), createSemester(semester, 1),
-                                   createSemester(semester, 2)];
+                createSemester(semester), createSemester(semester, 1),
+                createSemester(semester, 2)];
             break;
         case 2:
             let semester01 = parseInt(allocatedSemesters[0][1]);
             let semester02 = parseInt(allocatedSemesters[1][1]);
             if ((semester01 + 1) === semester02) {
                 allocatableSemesters = [createSemester(semester01, -1), createSemester(semester01),
-                                       createSemester(semester02), createSemester(semester02, 1)];
+                    createSemester(semester02), createSemester(semester02, 1)];
             } else {
                 allocatableSemesters = [createSemester(semester01), createSemester(semester01, 1),
-                                        createSemester(semester02)];
+                    createSemester(semester02)];
             }
             break;
         case 3:
@@ -103,87 +148,16 @@ function createSemester(semester, step=0) {
     return `S${newSemester}`;
 }
 
-function getAllocatedSemesters(modules) {
-    modules = sortModulesBySemester(modules);
-    const allocatedSemesters = [];
-    for (const module of modules) {
-        if (!allocatedSemesters.includes(module["semester"])) {
-            allocatedSemesters.push(module["semester"]);
+function displayPossibilities(allocatableSemesters, e) {
+    document.querySelectorAll("#desired-modules .filters a").forEach(function (a) {
+        if (allocatableSemesters.includes(a.innerHTML)) {
+            a.parentNode.classList.add("selected-semester");
+        } else {
+            a.parentNode.classList.remove("selected-semester");
         }
-    }
-    return allocatedSemesters;
-}
-
-function getModuleName(e) {
-    return e.target.parentNode.querySelector("h2").innerHTML;
-}
-
-function getWithdrawnECTS() {
-    return getItemFromLocalStorage("person")["ECTS"];
-}
-
-function computeTotalECTS(modules) {
-    let ECTS = 0;
-    for (const module of modules) {
-        ECTS += module["ects"];
-    }
-    return ECTS;
-}
-
-
-
-function getModule(moduleName) {
-    for (const module of modules) {
-        if (module["module"] === moduleName) {
-            return module;
-        }
-    }
-}
-
-function updateArrayOfModules(modules, module) {
-    if (checkPresenceModule(modules, module)) {
-        modules.splice(getIndexOfModule(modules, module), 1);
-    } else {
-        modules.push(module);
-    }
-    return modules;
-}
-
-function getIndexOfModule(modules, module) {
-    for (let i = 0; i < modules.length; i++) {
-        if (modules[i]["module"] === module["module"]) {
-            return i;
-        }
-    }
-    return NaN;
-}
-
-function toggleClass(el, className) {
-    el.classList.toggle(className);
-}
-
-function checkPresenceModule(modules, module) {
-    return modules.some(moduleOfArray => moduleOfArray["module"] === module["module"]);
-}
-
-function updateDesiredModulesSection() {
-    const section = document.querySelector("#desired-modules");
-    resetSemesters(section);
-    resetSelect(section);
-    const uncompletedModules = filterArray(modules, getItemFromLocalStorage("completedModules"));
-    fillModules("#desired-modules", uncompletedModules, "Take course");
-}
-
-function resetSemesters(section) {
-    section.querySelectorAll(".filters li").forEach(function (li) {
-        li.classList.add("selected-semester")
     });
+    filterAndSortModules(e);
 }
-
-function resetSelect(section) {
-    section.querySelector(".filters select").selectedIndex = 0;
-}
-
 
 
 function fillModules(selector, modules, buttonText) {
@@ -232,14 +206,15 @@ function checkModuleSelection(module, id) {
     }
 }
 
-function compareTwoModules(M01, M02) {
-    return M01["module"] === M02["module"];
-}
-
-
 
 function validateAllocatedECTS(e) {
     if (computeTotalECTS(getItemFromLocalStorage("desiredModules")) < getWithdrawnECTS()) {
         e.stopImmediatePropagation();
     }
+}
+
+
+
+function toggleClass(el, className) {
+    el.classList.toggle(className);
 }

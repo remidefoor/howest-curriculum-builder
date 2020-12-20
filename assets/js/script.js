@@ -60,3 +60,9 @@ function getItemFromLocalStorage(name) {
 function getVisibleSection() {
     return document.querySelector("#left-aligned-content > article:not(.hidden), #left-aligned-content section:not(.hidden)");
 }
+
+function filterArray(mainArray, arrayOfRedundancies) {
+    return mainArray.filter(function (module) {
+        return !checkPresenceModule(arrayOfRedundancies, module);
+    })
+}
