@@ -37,7 +37,7 @@ Curriculum configurator
     - Cancel last selection **
 - If not all ECTS are allocated
     - Block link to next page **
-- Modules can only be selected over three consecutive semesters  # todo
+- Modules can only be selected over three consecutive semesters
 
 quickview
 - Display amount allocated ECTS
@@ -54,14 +54,14 @@ quickview
     - Get desired modules **
     - Sort desired modules **
     - Create object with semester-numberOfModulesSemester **
-    - Loop over desired modules **
+    - Loop over desired modules
         - Increment number of modules of semester **
-    - Loop over properties object **
+    - Loop over properties object
         - Insert data into html **
 
 Choice overview
-- Display number of completed ECTS **
-- Display number of stated ECTS **
+- Display number of completed ECTS
+- Display number of stated ECTS
 - Display completed and allocated modules in table **
     - If amount of modules is odd **
         - Add padding **

@@ -9,7 +9,6 @@ function init() {
     if (!getItemFromLocalStorage("person")) {
         initializeModulesInLocalStorage();
     }
-
     // Fillings
     if (getItemFromLocalStorage("person")) {
         fillPersonalData();
