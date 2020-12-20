@@ -9,53 +9,6 @@ function delegateModuleAction(e) {
             handleDesiredModuleAction();
         }
     }
-
-
-
-
-    /*if (e.target.tagName === "BUTTON") {
-        e.preventDefault();
-        if (getVisibleSection().id === "desired-modules") {
-            let ECTSCurrentModule = parseInt(e.target.parentNode.querySelector("p").innerHTML[0]);
-            let withdrawnECTS = computeTotalECTS(desiredModules) + ECTSCurrentModule;
-            if (withdrawnECTS > getWithdrawnECTS()) {
-                alert(`Unable to withdraw more ECTS than stated: ${getWithdrawnECTS()}`);
-                return false;
-            }
-        }
-
-        e.target.classList.toggle("selected-module");
-        const moduleName = e.target.parentNode.querySelector("h2").innerHTML;
-        const modules = getCorrespondingArray();
-        updateArrayOfModules(modules, moduleName);
-        if (modules === completedModules) {
-            resetCurriculumConfigurator();
-        }
-        if (modules === desiredModules) {
-            fillQuickview();
-        }
-    }*/
-}
-
-function getCorrespondingArray() {
-    const visibleSection = getVisibleSection();
-    if (visibleSection.id === "completed-modules") {
-        return completedModules;
-    } else {
-        return desiredModules;
-    }
-}
-
-function computeTotalECTS(modules) {
-    let selectedECTS = 0;
-    for (const module of modules) {
-        selectedECTS += parseInt(module["ects"]);
-    }
-    return selectedECTS;
-}
-
-function getWithdrawnECTS() {
-    return JSON.parse(localStorage.getItem("person"))["ECTS"];
 }
 
 function filterArray(mainArray, arrayOfRedundancies) {
@@ -68,8 +21,7 @@ function filterArray(mainArray, arrayOfRedundancies) {
 
 
 function handleCompletedModulesAction(e) {
-    let moduleName = e.target.parentNode.querySelector("h2").innerHTML;
-    const module = getModule(moduleName);
+    const module = getModule(getModuleName(e));
     const completedModules = updateArrayOfModules(getItemFromLocalStorage("completedModules"), module);
     sendItemToLocalStorage("completedModules", completedModules);
     toggleClass(e.target, "selected-module");
@@ -84,9 +36,81 @@ function handleCompletedModulesAction(e) {
     updateDesiredModulesSection();
 }
 
-function handleDesiredModuleAction(){
+function handleDesiredModuleAction(e){
+    const module = getModule(getModuleName(e));
+    const desiredModules = getItemFromLocalStorage("desiredModules");
+    if (!e.target.matches("selected-module")) {
+        let withdrawnECTS = getWithdrawnECTS();
+        let allocatedECTS = computeTotalECTS(desiredModules) + module["ects"];
+        if (allocatedECTS > withdrawnECTS) {
+            return false;
+        }
+        const allocatedSemesters = getAllocatedSemesters(getItemFromLocalStorage("desiredModules"));
+        if (!determineAllocatableSemesters(allocatedSemesters).includes(module["semester"])) {
+            return false;
+        }
 
+
+    }
 }
+
+function determineAllocatableSemesters(allocatedSemesters) {
+    let allocatableSemesters;
+    switch (allocatedSemesters.length) {
+        case 1:
+            let semester = allocatedSemesters[0][1];
+            allocatableSemesters = [createSemester(semester, -2), createSemester(semester, -1),
+                                   createSemester(semester), createSemester(semester, 1),
+                                   createSemester(semester, 2)];
+            break;
+        case 2:
+            if (allocatedSemesters[0][1] === allocatedSemesters[1][1] + 1) {
+                allocatableSemesters = [createSemester(allocatedSemesters[0][1], -1),
+                                       createSemester(allocatedSemesters[1][1], 1)];
+            } else {
+                allocatableSemesters = [createSemester(allocatedSemesters[0][1], 1)];
+            }
+            break;
+        case 3:
+            allocatableSemesters = allocatedSemesters;
+            break;
+        default:
+            allocatableSemesters = ["S1", "S2", "S3", "S4", "S5", "S6"];
+    }
+    return allocatableSemesters;
+}
+
+function createSemester(number, step=0) {
+    return `S${number + step}`
+}
+
+function getAllocatedSemesters(modules) {
+    modules = sortModulesBySemester(modules);
+    const allocatedSemesters = [];
+    for (const module of modules) {
+        if (!allocatedSemesters.includes(module["semester"])) {
+            allocatedSemesters.push(module["semester"]);
+        }
+    }
+}
+
+function getModuleName(e) {
+    return e.target.parentNode.querySelector("h2");
+}
+
+function getWithdrawnECTS() {
+    return getItemFromLocalStorage("person")["ECTS"];
+}
+
+function computeTotalECTS(modules) {
+    let ECTS = 0;
+    for (const module of modules) {
+        ECTS += module["ects"];
+    }
+    return ECTS;
+}
+
+
 
 function getModule(moduleName) {
     for (const module of modules) {
