@@ -43,6 +43,7 @@ function handleDesiredModuleAction(e){
         let withdrawnECTS = getWithdrawnECTS();
         let allocatedECTS = computeTotalECTS(desiredModules) + module["ects"];
         if (allocatedECTS > withdrawnECTS) {
+            alert("Unable to allocate more ECTS than withdrawn");
             return false;
         }
         const allocatedSemesters = getAllocatedSemesters(getItemFromLocalStorage("desiredModules"));
