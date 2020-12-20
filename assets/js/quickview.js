@@ -46,24 +46,6 @@ function ectsPerSemester(){
     }
 }
 
-function sortModulesBySemester(modules) {
-    return modules.sort(function (M01, M02) {
-        if (M01["semester"] < M02["semester"]) {
-            return -1;
-        } else if (M01["semester"] > M02["semester"]) {
-            return 1;
-        } else {
-            if (M01["module"] < M02["module"]) {
-                return -1;
-            } else if (M01["module"] > M02["module"]) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-    });
-}
-
 function getModulesPerSemester(modules) {
     const modulesPerSemester = {};
     for (const module of modules) {
@@ -92,3 +74,21 @@ function removeHTML(parent) {
     parent.innerHTML = "";
 }
 
+
+function sortModulesBySemester(modules) {
+    return modules.sort(function (M01, M02) {
+        if (M01["semester"] < M02["semester"]) {
+            return -1;
+        } else if (M01["semester"] > M02["semester"]) {
+            return 1;
+        } else {
+            if (M01["module"] < M02["module"]) {
+                return -1;
+            } else if (M01["module"] > M02["module"]) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+    });
+}
