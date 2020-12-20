@@ -36,7 +36,7 @@ function determineProgressBarColor(percentageAllocatedECTS) {
 
 function ectsPerSemester(){
     const target = document.querySelector("#quickview ul");
-    target.innerHTML = "";
+    removeHTML(target);
     const sortedModules = sortModulesBySemester(getItemFromLocalStorage("desiredModules"));
     const modulesPerSemester = getModulesPerSemester(sortedModules);
     for (const semester in modulesPerSemester) {
@@ -85,3 +85,10 @@ function determineNumberOfModule(amount) {
         return "modules"
     }
 }
+
+
+
+function removeHTML(parent) {
+    parent.innerHTML = "";
+}
+

@@ -12,6 +12,8 @@ function fillSummary(e) {
 
 
 function fillTbody(parent) {
+    const tBody = parent.querySelector("tbody");
+    removeHTML(tBody);
     const sortedCompletedModules = sortModulesBySemester(getItemFromLocalStorage("completedModules"));
     const sortedDesiredModules = sortModulesBySemester(getItemFromLocalStorage("desiredModules"));
     let i = 0;
@@ -20,32 +22,33 @@ function fillTbody(parent) {
         let rightPartTr = createTrPart(i, sortedDesiredModules, "right-part-table");
         let tr = `${leftPartTr}
                   ${rightPartTr}`;
-        parent.querySelector("tbody").insertAdjacentHTML("beforeend", tr);
-        i += 1
+        tBody.insertAdjacentHTML("beforeend", tr);
+        i += 1;
     }
 }
 
 function createTrPart(i, modules, side) {
-    let leftTr;
+    let trPart;
     if (i < modules.length) {
-        leftTr = `<td class="${side} right-align">${modules[i]["semester"]}</td>
+        trPart = `<td class="${side} right-align">${modules[i]["semester"]}</td>
                   <td class="${side}">${modules[i]["module"]}</td> 
                   <td class="${side}">${modules[i]["ects"]}ECTS</td>`;
     } else {
-        leftTr = `<td class="${side} right-align"></td>
+        trPart = `<td class="${side} right-align"></td>
                   <td class="${side}"></td>
                   <td class="${side}"></td>`;
     }
-    if (modules === getItemFromLocalStorage("completedModules")) {
-        return  leftTr = `<tr>
-                              ${leftTr}`;
+    if (side === "left-part-table") {
+        return  trPart = `<tr>
+                              ${trPart}`;
     } else {
-        return leftTr = `    ${leftTr}
+        return trPart = `    ${trPart}
                          </tr>`;
     }
 }
 
 function filltfoot(parent, completedECTS, withdrawnECTS) {
+    parent.querySelectorAll("tfoot th:not(.right-align)").forEach(th => th.remove());
     completedECTS = `<th class="left-part-table">${completedECTS}</th>`;
     parent.querySelector("tfoot th.left-part-table").insertAdjacentHTML("afterend", completedECTS);
     withdrawnECTS = `<th class="right-part-table">${withdrawnECTS}</th>`;

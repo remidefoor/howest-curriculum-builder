@@ -188,7 +188,7 @@ function resetSelect(section) {
 
 function fillModules(selector, modules, buttonText) {
     const parent = document.querySelector(`${selector} .modules`);
-    removePreviousModules(parent);
+    removeHTML(parent);
     for (const module of modules) {
         let article = `<article>
                            <h2>${module["module"]}</h2>
@@ -201,10 +201,6 @@ function fillModules(selector, modules, buttonText) {
                        </article>`;
         parent.insertAdjacentHTML("beforeend", article);
     }
-}
-
-function removePreviousModules(parent) {
-    parent.innerHTML = "";
 }
 
 function getRandomColor() {
