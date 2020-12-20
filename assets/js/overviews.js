@@ -6,7 +6,7 @@ function delegateModuleAction(e) {
         if (visibleSection.id === "completed-modules") {
             handleCompletedModulesAction(e);
         } else {
-            handleDesiredModuleAction();
+            handleDesiredModuleAction(e);
         }
     }
 }
@@ -25,11 +25,11 @@ function handleCompletedModulesAction(e) {
     const completedModules = updateArrayOfModules(getItemFromLocalStorage("completedModules"), module);
     sendItemToLocalStorage("completedModules", completedModules);
     toggleClass(e.target, "selected-module");
-    if (e.target.matches("selected-module")) {
+    if (e.target.classList.contains("selected-module")) {
         const desiredModules = getItemFromLocalStorage("desiredModules");
         if (checkPresenceModule(desiredModules, module)) {
-            desiredModules.splice(getIndexOfModule(desiredModules, module));
-            sendItemToLocalStorage("desireModules", desiredModules);
+            desiredModules.splice(getIndexOfModule(desiredModules, module), 1);
+            sendItemToLocalStorage("desiredModules", desiredModules);
             fillQuickview();
         }
     }
@@ -38,8 +38,8 @@ function handleCompletedModulesAction(e) {
 
 function handleDesiredModuleAction(e){
     const module = getModule(getModuleName(e));
-    const desiredModules = getItemFromLocalStorage("desiredModules");
-    if (!e.target.matches("selected-module")) {
+    let desiredModules = getItemFromLocalStorage("desiredModules");
+    if (!e.target.classList.contains("selected-module")) {
         let withdrawnECTS = getWithdrawnECTS();
         let allocatedECTS = computeTotalECTS(desiredModules) + module["ects"];
         if (allocatedECTS > withdrawnECTS) {
@@ -49,26 +49,30 @@ function handleDesiredModuleAction(e){
         if (!determineAllocatableSemesters(allocatedSemesters).includes(module["semester"])) {
             return false;
         }
-
-
     }
+    desiredModules = updateArrayOfModules(desiredModules, module);
+    sendItemToLocalStorage("desiredModules", desiredModules);
+    toggleClass(e.target, "selected-module");
+    fillQuickview();
 }
 
 function determineAllocatableSemesters(allocatedSemesters) {
     let allocatableSemesters;
     switch (allocatedSemesters.length) {
         case 1:
-            let semester = allocatedSemesters[0][1];
+            let semester = parseInt(allocatedSemesters[0][1]);
             allocatableSemesters = [createSemester(semester, -2), createSemester(semester, -1),
                                    createSemester(semester), createSemester(semester, 1),
                                    createSemester(semester, 2)];
             break;
         case 2:
-            if (allocatedSemesters[0][1] === allocatedSemesters[1][1] + 1) {
-                allocatableSemesters = [createSemester(allocatedSemesters[0][1], -1),
-                                       createSemester(allocatedSemesters[1][1], 1)];
+            let semester01 = parseInt(allocatedSemesters[0][1]);
+            let semester02 = parseInt(allocatedSemesters[1][1]);
+            if ((semester01 + 1) === semester02) {
+                allocatableSemesters = [createSemester(semester01, -1),
+                                       createSemester(semester02, 1)];
             } else {
-                allocatableSemesters = [createSemester(allocatedSemesters[0][1], 1)];
+                allocatableSemesters = [createSemester(semester01, 1)];
             }
             break;
         case 3:
@@ -80,8 +84,9 @@ function determineAllocatableSemesters(allocatedSemesters) {
     return allocatableSemesters;
 }
 
-function createSemester(number, step=0) {
-    return `S${number + step}`
+function createSemester(semester, step=0) {
+    let newSemester = semester + step;
+    return `S${newSemester}`;
 }
 
 function getAllocatedSemesters(modules) {
@@ -92,10 +97,11 @@ function getAllocatedSemesters(modules) {
             allocatedSemesters.push(module["semester"]);
         }
     }
+    return allocatedSemesters;
 }
 
 function getModuleName(e) {
-    return e.target.parentNode.querySelector("h2");
+    return e.target.parentNode.querySelector("h2").innerHTML;
 }
 
 function getWithdrawnECTS() {
@@ -122,7 +128,6 @@ function getModule(moduleName) {
 
 function updateArrayOfModules(modules, module) {
     if (checkPresenceModule(modules, module)) {
-        console.log(getIndexOfModule(modules, module));
         modules.splice(getIndexOfModule(modules, module), 1);
     } else {
         modules.push(module);
