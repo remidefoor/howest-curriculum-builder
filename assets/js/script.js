@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     // Other initialisations
     if (!getItemFromLocalStorage("person")) {
-        initializeLocalStorage();
+        initializeModulesInLocalStorage();
     }
 
     // Fillings
@@ -29,7 +29,7 @@ function init() {
 }
 
 
-function initializeLocalStorage() {
+function initializeModulesInLocalStorage() {
     sendItemToLocalStorage("completedModules", []);
     sendItemToLocalStorage("desiredModules", []);
 }

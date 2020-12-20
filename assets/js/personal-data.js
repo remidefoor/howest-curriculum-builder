@@ -47,8 +47,7 @@ function compareObjects(object01,object02) {
 }
 
 function resetModules() {
-    sendItemToLocalStorage("completedModules", []);
-    sendItemToLocalStorage("desiredModules", []);
+    initializeModulesInLocalStorage();
     fillModules("#completed-modules", modules, "Completed");
     fillModules("#desired-modules", filterArray(modules, getItemFromLocalStorage("completedModules")), "Take course");
 }
