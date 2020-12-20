@@ -15,7 +15,7 @@ function init() {
         fillPersonalData();
     }
     fillModules("#completed-modules", modules, "Completed");
-    fillModules("#desired-modules", modules, "Take course");
+    fillModules("#desired-modules", filterArray(modules, getItemFromLocalStorage("completedModules")), "Take course");
     // Bindings
     document.querySelector(".navigation-links a[href='#overview']").addEventListener("click", validateAllocatedECTS);
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
