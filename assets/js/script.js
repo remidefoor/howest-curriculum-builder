@@ -17,7 +17,7 @@ function init() {
     fillModules("#completed-modules", modules, "Completed");
     fillModules("#desired-modules", modules, "Take course");
     // Bindings
-    document.querySelector(".navigation-links a[href='#overview']").addEventListener("click", validateWithdrawnECTS);
+    document.querySelector(".navigation-links a[href='#overview']").addEventListener("click", validateAllocatedECTS);
     document.querySelectorAll(".navigation-links a").forEach(a => a.addEventListener("click", handleNavigation));
     document.querySelector(".navigation-links a[href='#overview']").addEventListener("click", fillSummary);
     document.querySelector(".navigation-links a[href='#submission']").addEventListener("click", removeUserData);

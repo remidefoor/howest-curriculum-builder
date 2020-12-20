@@ -4,7 +4,7 @@ function delegateModuleAction(e) {
     if (e.target.tagName === "BUTTON" ) {
         const visibleSection = getVisibleSection();
         if (visibleSection.id === "completed-modules") {
-            handleCompletedModulesAction(e);
+            handleCompletedModuleAction(e);
         } else {
             handleDesiredModuleAction(e);
         }
@@ -20,7 +20,7 @@ function filterArray(mainArray, arrayOfRedundancies) {
 
 
 
-function handleCompletedModulesAction(e) {
+function handleCompletedModuleAction(e) {
     const module = getModule(getModuleName(e));
     const completedModules = updateArrayOfModules(getItemFromLocalStorage("completedModules"), module);
     sendItemToLocalStorage("completedModules", completedModules);
@@ -220,7 +220,6 @@ function checkModuleSelection(module, id) {
     } else {
         return "";
     }
-
 }
 
 function compareTwoModules(M01, M02) {
@@ -229,8 +228,8 @@ function compareTwoModules(M01, M02) {
 
 
 
-function validateWithdrawnECTS(e) {
-    if (computeTotalECTS(desiredModules) !== getWithdrawnECTS()) {
+function validateAllocatedECTS(e) {
+    if (computeTotalECTS(getItemFromLocalStorage("desiredModules")) < getWithdrawnECTS()) {
         e.stopImmediatePropagation();
     }
 }
