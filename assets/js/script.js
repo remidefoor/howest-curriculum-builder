@@ -29,12 +29,6 @@ function init() {
 }
 
 
-function initializeModulesInLocalStorage() {
-    sendItemToLocalStorage("completedModules", []);
-    sendItemToLocalStorage("desiredModules", []);
-}
-
-
 function handleNavigation(e) {
     const visibleSection = getVisibleSection();
     const nextPage = e.target.getAttribute("href");
@@ -57,12 +51,19 @@ function getItemFromLocalStorage(name) {
 }
 
 
-function getVisibleSection() {
-    return document.querySelector("#left-aligned-content > article:not(.hidden), #left-aligned-content section:not(.hidden)");
+function initializeModulesInLocalStorage() {
+    sendItemToLocalStorage("completedModules", []);
+    sendItemToLocalStorage("desiredModules", []);
 }
+
 
 function filterArray(mainArray, arrayOfRedundancies) {
     return mainArray.filter(function (module) {
         return !checkPresenceModule(arrayOfRedundancies, module);
     })
+}
+
+
+function getVisibleSection() {
+    return document.querySelector("#left-aligned-content > article:not(.hidden), #left-aligned-content section:not(.hidden)");
 }
